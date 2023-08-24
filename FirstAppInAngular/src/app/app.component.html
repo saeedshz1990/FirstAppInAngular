@@ -1,20 +1,39 @@
-<h2>This is a App Component</h2>
+<!--<h2>This is a App Component</h2>-->
 <!--<app-users></app-users>-->
 
 <!--class selector-->
 <!--<div class="app-users"></div>-->
 
 <!--property selector-->
-<div app-users></div>
+<!--<div app-users></div>-->
 
 <!--databinding-->
 <!--String Polation-->
-<p> {{name}}</p>
+<!--<p> {{name}}</p>-->
 <!--Property Binding-->
-<button [disabled]="isEnabled">Add User</button>
+<!--<button [disabled]="isEnabled">Add User</button>-->
 
 <!--event Binding-->
-<input type="text" (input)="OnInpitChange($event)">
+<!--<input type="text" (input)="OnInpitChange($event)">-->
 
 <!--TwoWay Binding-->
-<input type="text" [(ngModel)]="name">
+<!--<input type="text" [(ngModel)]="name">-->
+
+
+<!--*************************-->
+
+<h1 [hidden]="userName===''">Welcome {{userName}}</h1>
+<h1 [hidden]="userName!==''">Please Enter Your UserName</h1>
+<hr>
+<label>Username</label>
+<input type="text" (input)="onUserNameInputChanged($event)">
+<br>
+<label>Password</label>
+<input type="password" (input)="onPasswordInputChanged($event)">
+<br>
+<label>ReTypePassword</label>
+<input type="password" (input)="onRetypePasswordInputChanged($event)">
+<br>
+<br>
+<label [hidden]="!isPasswordMatch " style="color: green">Password Is Match!!!!</label>
+<label [hidden]="isPasswordMatch || password ===''" style="color: red">Password Is Not Match!!!!</label>
