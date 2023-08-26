@@ -46,6 +46,28 @@
 <label class="alert-secondary col-xxl-12">Attribute Binding</label>
 <p [style.font-size]="isCorrect ? '3rem' : '9rem'">Testing</p>
 <p [style]="style">Testing</p>
-<p [class]="isCorrect ? 'big-font-size' : 'small-font-size'" >Testing3</p>
-<p [class]="classes" >Testing4</p>
+<p [ngStyle]="style">Testing5</p>
+<p [class]="isCorrect ? 'big-font-size' : 'small-font-size'">Testing3</p>
+<p [class]="classes">Testing4</p>
+<p [ngClass]="classes">Testing4</p>
 
+<!--<p *ngIf="isCorrect">ngif true</p>-->
+<!--<p *ngIf="!isCorrect">ngif false</p>-->
+<p *ngIf="isCorrect; else elseCond ">ngif false</p>
+
+<!--<ng-template [ngIf]="!isCorrect">-->
+<!--  <p>ngIf True</p>-->
+<!--</ng-template>-->
+
+<ng-template #elseCond>Else Condition</ng-template>
+
+<button (click)="addNewUser()"></button>
+<p *ngFor="let user of users; let i=index">{{i + " : " + user}}</p>
+<p *ngFor="let user of userObj; let i=index trackBy:trackByFunc">{{user.id + " : " + user.name}}</p>
+
+<div [ngSwitch]="switchProperty">
+  <app-switch-case1 *ngSwitchCase="'a'"></app-switch-case1>
+  <app-switch-case2 *ngSwitchCase="'f'"></app-switch-case2>
+  <app-switch-case3 *ngSwitchCase="'z'"></app-switch-case3>
+  <app-switch-case4 *ngSwitchCase="'b'"></app-switch-case4>
+</div>
