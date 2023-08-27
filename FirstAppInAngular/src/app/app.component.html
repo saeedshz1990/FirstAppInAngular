@@ -71,8 +71,13 @@
 <!--  <app-switch-case3 *ngSwitchCase="'z'"></app-switch-case3>-->
 <!--  <app-switch-case4 *ngSwitchCase="'b'"></app-switch-case4>-->
 <!--</div>-->
-<app-star *ngFor="let rating of ratings" [starRating]=rating (starEventEmitter)="onStartClicked($event)" )></app-star>
+<!--<app-star *ngFor="let rating of ratings" [starRating]=rating (starEventEmitter)="onStartClicked($event)" )></app-star>-->
 <!--<app-star [rating]=4></app-star>-->
 <!--<app-star [rating]=4.5></app-star>-->
 <!--<app-star [rating]=5></app-star>-->
 <!--<app-star [rating]=3></app-star>-->
+
+<div class="container-fluid">
+  <app-adduser (onAddUserClicked)="userAdded($event)"></app-adduser>
+  <app-usertable [users]="users" ]></app-usertable>
+</div>
