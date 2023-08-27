@@ -17,8 +17,8 @@ export class AppComponent implements OnInit {
   isCancelled: boolean = true;
   style = {};
   classes = {};
-  switchProperty:string='a';
-
+  switchProperty: string = 'a';
+  ratings: number[] = [3, 3.5, 5, 4.5, 4];
 
   users: string[] = ['fatemeh', 'negar', 'maryam', 'zahra']
   userObj: any = [
@@ -83,6 +83,10 @@ export class AppComponent implements OnInit {
                            Event
   ) {
     this.password = (<HTMLInputElement>e.target).value;
+  }
+
+  onStartClicked(rating: number) {
+console.log(`The Rating ${rating} Is Clicked`);
   }
 
   onRetypePasswordInputChanged(e

@@ -22,52 +22,57 @@
 
 <!--*************************-->
 
-<h1 [hidden]="userName===''">Welcome {{userName}}</h1>
-<h1 [hidden]="userName!==''">Please Enter Your UserName</h1>
-<hr>
-<label>Username</label>
-<input type="text" (input)="onUserNameInputChanged($event)">
-<br>
-<label>Password</label>
-<input type="password" (input)="onPasswordInputChanged($event)">
-<br>
-<label>ReTypePassword</label>
-<input type="password" (input)="onRetypePasswordInputChanged($event)">
-<br>
-<br>
-<label [hidden]="!isPasswordMatch " style="color: green">Password Is Match!!!!</label>
-<label [hidden]="isPasswordMatch || password ===''" style="color: red">Password Is Not Match!!!!</label>
+<!--<h1 [hidden]="userName===''">Welcome {{userName}}</h1>-->
+<!--<h1 [hidden]="userName!==''">Please Enter Your UserName</h1>-->
+<!--<hr>-->
+<!--<label>Username</label>-->
+<!--<input type="text" (input)="onUserNameInputChanged($event)">-->
+<!--<br>-->
+<!--<label>Password</label>-->
+<!--<input type="password" (input)="onPasswordInputChanged($event)">-->
+<!--<br>-->
+<!--<label>ReTypePassword</label>-->
+<!--<input type="password" (input)="onRetypePasswordInputChanged($event)">-->
+<!--<br>-->
+<!--<br>-->
+<!--<label [hidden]="!isPasswordMatch " style="color: green">Password Is Match!!!!</label>-->
+<!--<label [hidden]="isPasswordMatch || password ===''" style="color: red">Password Is Not Match!!!!</label>-->
 
 
-<button class="btn btn-outline-primary btn-group">Add Person</button>
+<!--<button class="btn btn-outline-primary btn-group">Add Person</button>-->
 
 
 <!--Attribute Bindiing-->
-<label class="alert-secondary col-xxl-12">Attribute Binding</label>
-<p [style.font-size]="isCorrect ? '3rem' : '9rem'">Testing</p>
-<p [style]="style">Testing</p>
-<p [ngStyle]="style">Testing5</p>
-<p [class]="isCorrect ? 'big-font-size' : 'small-font-size'">Testing3</p>
-<p [class]="classes">Testing4</p>
-<p [ngClass]="classes">Testing4</p>
+<!--<label class="alert-secondary col-xxl-12">Attribute Binding</label>-->
+<!--<p [style.font-size]="isCorrect ? '3rem' : '9rem'">Testing</p>-->
+<!--<p [style]="style">Testing</p>-->
+<!--<p [ngStyle]="style">Testing5</p>-->
+<!--<p [class]="isCorrect ? 'big-font-size' : 'small-font-size'">Testing3</p>-->
+<!--<p [class]="classes">Testing4</p>-->
+<!--<p [ngClass]="classes">Testing4</p>-->
 
 <!--<p *ngIf="isCorrect">ngif true</p>-->
 <!--<p *ngIf="!isCorrect">ngif false</p>-->
-<p *ngIf="isCorrect; else elseCond ">ngif false</p>
+<!--<p *ngIf="isCorrect; else elseCond ">ngif false</p>-->
 
 <!--<ng-template [ngIf]="!isCorrect">-->
 <!--  <p>ngIf True</p>-->
 <!--</ng-template>-->
 
-<ng-template #elseCond>Else Condition</ng-template>
+<!--<ng-template #elseCond>Else Condition</ng-template>-->
 
-<button (click)="addNewUser()"></button>
-<p *ngFor="let user of users; let i=index">{{i + " : " + user}}</p>
-<p *ngFor="let user of userObj; let i=index trackBy:trackByFunc">{{user.id + " : " + user.name}}</p>
+<!--<button (click)="addNewUser()"></button>-->
+<!--<p *ngFor="let user of users; let i=index">{{i + " : " + user}}</p>-->
+<!--<p *ngFor="let user of userObj; let i=index trackBy:trackByFunc">{{user.id + " : " + user.name}}</p>-->
 
-<div [ngSwitch]="switchProperty">
-  <app-switch-case1 *ngSwitchCase="'a'"></app-switch-case1>
-  <app-switch-case2 *ngSwitchCase="'f'"></app-switch-case2>
-  <app-switch-case3 *ngSwitchCase="'z'"></app-switch-case3>
-  <app-switch-case4 *ngSwitchCase="'b'"></app-switch-case4>
-</div>
+<!--<div [ngSwitch]="switchProperty">-->
+<!--  <app-switch-case1 *ngSwitchCase="'a'"></app-switch-case1>-->
+<!--  <app-switch-case2 *ngSwitchCase="'f'"></app-switch-case2>-->
+<!--  <app-switch-case3 *ngSwitchCase="'z'"></app-switch-case3>-->
+<!--  <app-switch-case4 *ngSwitchCase="'b'"></app-switch-case4>-->
+<!--</div>-->
+<app-star *ngFor="let rating of ratings" [starRating]=rating (starEventEmitter)="onStartClicked($event)" )></app-star>
+<!--<app-star [rating]=4></app-star>-->
+<!--<app-star [rating]=4.5></app-star>-->
+<!--<app-star [rating]=5></app-star>-->
+<!--<app-star [rating]=3></app-star>-->
