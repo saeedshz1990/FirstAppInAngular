@@ -60,13 +60,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   // ]
   // users: AppInterface[] = [];
   htmlTest = '<img src=xxx onerror="alert(\"XSS Attack"\)">';
+  // @ViewChild('par', {static: true, read: ElementRef}) par: ElementRef;
+  // @ViewChild(IncComponent, {static: true, read: IncComponent})
+
+  incComp!: IncComponent;
+  //
+  // @ViewChildren(IncComponent, {read: IncComponent})
+  // incComps!: QueryList<IncComponent>;
   // @ts-ignore
   @ViewChild('par', {static: true, read: ElementRef}) par: ElementRef;
-  @ViewChild(IncComponent, {static: true, read: IncComponent})
-  incComp!: IncComponent;
-
-  @ViewChildren(IncComponent, {read: IncComponent})
-  incComps!: QueryList<IncComponent>;
 
   constructor(private renderer: Renderer2) {
   }
@@ -83,18 +85,22 @@ export class AppComponent implements OnInit, AfterViewInit {
     // }
 
     // this.par.nativeElement.style.color = 'blue'; //it's Wrong because XSS Attack is Activated
-    this.par.nativeElement.innerHTML = this.htmlTest;
-    this.renderer.setStyle(this.par.nativeElement, 'color', 'purple');
-    this.par.nativeElement.innerHTML = '123345452345';
-    console.log(this.incComp);
-    this.incComp.increment();
+    // this.par.nativeElement.innerHTML = this.htmlTest;
+    // this.renderer.setStyle(this.par.nativeElement, 'color', 'purple');
+    // this.par.nativeElement.innerHTML = '123345452345';
+    // console.log(this.incComp);
+    // this.incComp.increment();
   }
 
   ngAfterViewInit(): void {
-    this.incComps.forEach((comp) => {
-      comp.increment();
-    });
+    // this.incComps.forEach((comp) => {
+    //   comp.increment();
+    // });
 
+  }
+
+  onContentChange() {
+    this.par.nativeElement.innerHTML = '123456';
   }
 
   // userAdded(users: AppInterface[]) {
