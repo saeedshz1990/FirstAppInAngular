@@ -12,6 +12,7 @@ import { SwitchCase4Component } from './switch-case4/switch-case4.component';
 import { StarComponent } from './star/star.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { UsertableComponent } from './usertable/usertable.component';
+import { IncComponent } from './inc/inc.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UsertableComponent } from './usertable/usertable.component';
     SwitchCase4Component,
     StarComponent,
     AdduserComponent,
-    UsertableComponent
+    UsertableComponent,
+    IncComponent
   ],
   imports: [
     BrowserModule,

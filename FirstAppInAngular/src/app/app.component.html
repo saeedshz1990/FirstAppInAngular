@@ -77,7 +77,20 @@
 <!--<app-star [rating]=5></app-star>-->
 <!--<app-star [rating]=3></app-star>-->
 
-<div class="container-fluid">
-  <app-adduser (onAddUserClicked)="userAdded($event)"></app-adduser>
-  <app-usertable [users]="users" ]></app-usertable>
-</div>
+<!--<div class="container-fluid">-->
+<!--  <app-adduser (onAddUserClicked)="userAdded($event)"></app-adduser>-->
+<!--  <app-usertable [users]="users" ]></app-usertable>-->
+<!--</div>-->
+<!--sanitizie html-->
+<!--<p #par [innerHTML]="htmlTest">From App Component</p>-->
+<p #par>From App Component</p>
+<label>Test Label</label>
+<input type="text" #inputName>
+<button (click)="onClick(inputName)"> Click Me!!!</button>
+<app-inc></app-inc>
+<app-inc></app-inc>
+<app-inc></app-inc>
+<app-inc></app-inc>
+<app-inc></app-inc>
+<app-inc></app-inc>
+<app-inc></app-inc>

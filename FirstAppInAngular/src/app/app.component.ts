@@ -1,12 +1,22 @@
-import {Component, OnInit} from '@angular/core';
-import {AppInterface} from "./app-interface";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  Renderer2,
+  ViewChild, ViewChildren,
+  ViewEncapsulation
+} from '@angular/core';
+import {IncComponent} from "./inc/inc.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   // name: string = 'Saeed';
   // isEnabled: boolean = false;
   // userName: string = '';
@@ -48,7 +58,18 @@ export class AppComponent implements OnInit {
   //     name: 'Ladan'
   //   },
   // ]
-  users: AppInterface[] = [];
+  // users: AppInterface[] = [];
+  htmlTest = '<img src=xxx onerror="alert(\"XSS Attack"\)">';
+  // @ts-ignore
+  @ViewChild('par', {static: true, read: ElementRef}) par: ElementRef;
+  @ViewChild(IncComponent, {static: true, read: IncComponent})
+  incComp!: IncComponent;
+
+  @ViewChildren(IncComponent, {read: IncComponent})
+  incComps!: QueryList<IncComponent>;
+
+  constructor(private renderer: Renderer2) {
+  }
 
   ngOnInit() {
     // this.style = {
@@ -60,11 +81,25 @@ export class AppComponent implements OnInit {
     //   'big-font-size': this.isModified,
     //   'cancelled-color': this.isCancelled
     // }
+
+    // this.par.nativeElement.style.color = 'blue'; //it's Wrong because XSS Attack is Activated
+    this.par.nativeElement.innerHTML = this.htmlTest;
+    this.renderer.setStyle(this.par.nativeElement, 'color', 'purple');
+    this.par.nativeElement.innerHTML = '123345452345';
+    console.log(this.incComp);
+    this.incComp.increment();
   }
 
-  userAdded(users: AppInterface[]) {
-this.users=users;
+  ngAfterViewInit(): void {
+    this.incComps.forEach((comp) => {
+      comp.increment();
+    });
+
   }
+
+  // userAdded(users: AppInterface[]) {
+  //   this.users = users;
+  // }
 
   // OnInpitChange(e
   //                 :
@@ -144,4 +179,11 @@ this.users=users;
   // trackByFunc(index: number, el: any) {
   //   return el.id;
   // }
+
+  onClick(val: HTMLInputElement) {
+    alert(val);
+    alert(val.value);
+  }
+
+
 }
