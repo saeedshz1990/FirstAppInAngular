@@ -9,6 +9,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {IncComponent} from "./inc/inc.component";
+import {IUser} from "./app-interface";
 
 @Component({
   selector: 'app-root',
@@ -70,10 +71,41 @@ export class AppComponent implements OnInit, AfterViewInit {
   // @ts-ignore
   @ViewChild('par', {static: true, read: ElementRef}) par: ElementRef;
 
+  user: IUser = {
+    name: 'Saeed',
+    age: 28
+  }
+  users: IUser[] = [
+    {
+      name: 'Saeed',
+      age: 28
+    },
+    {
+      name: 'Saeed',
+      age: 28
+    },
+    {
+      name: 'Saeed',
+      age: 28
+    },
+    {
+      name: 'Saeed',
+      age: 28
+    },
+    {
+      name: 'Saeed',
+      age: 28
+    }
+  ];
+
   constructor(private renderer: Renderer2) {
   }
 
+  onSelectedChanged(user: IUser){
+    console.log(user)
+  }
   ngOnInit() {
+    console.log(this.user);
     // this.style = {
     //   'font-size': this.isCorrect ? '2rem' : '9rem',
     //   'color': 'red',

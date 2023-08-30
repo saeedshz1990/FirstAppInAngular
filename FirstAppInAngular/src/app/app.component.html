@@ -94,5 +94,26 @@
 <!--<app-inc></app-inc>-->
 <!--<app-inc></app-inc>-->
 <!--<app-inc></app-inc>-->
-<app-users><p #par class="success">Hello World!!!</p></app-users>
-  <button (click)="onContentChange()" ></button>
+<!--<app-users><p #par class="success">Hello World!!!</p></app-users>-->
+<!--  <button (click)="onContentChange()" ></button>-->
+<app-user [user]="user"></app-user>
+<!--<select>-->
+<!--  <div *ngFor="let user of users">-->
+<!--    <div *ngIf="user.age  > 30">-->
+<!--      <option [ngValue]="user" ]>{{user.name}}  ({{user.age}})</option>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--  &lt;!&ndash;  <option *ngFor="let user of users">{{user.name}}  ({{user.age}})</option>&ndash;&gt;-->
+<!--</select>-->
+
+<select (change)="onSelectedChanged($event.target.value)" )>
+  <ng-container *ngFor="let user of users">
+    <div *ngIf="user.age  > 30">
+<!--      <option [ngValue]="user" ]>{{user.name}}  ({{user.age}})</option>-->
+      <option [Value]="user" ]>{{user.name}}  ({{user.age}})</option>
+
+    </div>
+  </ng-container>
+  <!--  <option *ngFor="let user of users">{{user.name}}  ({{user.age}})</option>-->
+</select>

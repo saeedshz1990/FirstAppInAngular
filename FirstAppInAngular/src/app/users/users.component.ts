@@ -66,6 +66,7 @@ export class UsersComponent implements OnInit,
     console.log("ngOnDestroy Called")
 
   }
+
   onChangeViewChild(){
     this.par2.nativeElement.innerHTML="View Child Changed"
   }
