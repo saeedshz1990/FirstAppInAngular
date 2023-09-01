@@ -1,18 +1,18 @@
-<p #par2>From Users</p>
+<!--<p #par2>From Users</p>-->
 
-<div style="background-color: green">
-  <ng-content select=".success"></ng-content>
-  <ng-content select="#success"></ng-content>
-</div>
-<div style="background-color: darkred">
-  <ng-content select=".error"></ng-content>
-  <ng-content select="#error"></ng-content>
-</div>
-<div style="background-color: blue">
-  <ng-content select=".warning"></ng-content>
-  <ng-content select="#warning"></ng-content>
-</div>
-<button (click)="onChangeViewChild()" >FromChild Change View Child</button>
+<!--<div style="background-color: green">-->
+<!--  <ng-content select=".success"></ng-content>-->
+<!--  <ng-content select="#success"></ng-content>-->
+<!--</div>-->
+<!--<div style="background-color: darkred">-->
+<!--  <ng-content select=".error"></ng-content>-->
+<!--  <ng-content select="#error"></ng-content>-->
+<!--</div>-->
+<!--<div style="background-color: blue">-->
+<!--  <ng-content select=".warning"></ng-content>-->
+<!--  <ng-content select="#warning"></ng-content>-->
+<!--</div>-->
+<!--<button (click)="onChangeViewChild()" >FromChild Change View Child</button>-->
 <!--<app-user></app-user>-->
 <!--<app-user></app-user>-->
 <!--<app-user></app-user>-->
@@ -23,3 +23,6 @@
 <!--<app-user></app-user>-->
 <!--<app-user></app-user>-->
 <!--<app-user></app-user>-->
+<button (click)="log()" class="btn btn-primary">Log In Console</button>
+<!--<app-user></app-user>-->
+<ng-content></ng-content>

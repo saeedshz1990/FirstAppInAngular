@@ -119,16 +119,27 @@
 <!--</select>-->
 
 
-<input type="text" appColorful style="width: fit-content">
-<p [appAppHighlight]="color"> Hello World!!!!!</p>
+<!--<input type="text" appColorful style="width: fit-content">-->
+<!--<p [appAppHighlight]="color"> Hello World!!!!!</p>-->
 
-<div *appCarousel="let image from images autoplay 'No' ;let ctrl=controller">
-  <img [src]="image" alt="">
-  <button (click)="ctrl.next()">Next Image</button>
-  <button (click)="ctrl.prev()">Previous Image</button>
-</div>
+<!--<div *appCarousel="let image from images autoplay 'No' ;let ctrl=controller">-->
+<!--  <img [src]="image" alt="">-->
+<!--  <button (click)="ctrl.next()">Next Image</button>-->
+<!--  <button (click)="ctrl.prev()">Previous Image</button>-->
+<!--</div>-->
 
 <!--convert this tag-->
 <!--<ng-template [appCarousel]>-->
 <!--  <div></div>-->
 <!--</ng-template>-->
+
+
+<!--Services-->
+<nav class="nav nav-fill nav-pills">
+  <a class="nav-item nav-link" [routerLink]="['/']" routerLinkActive="active"
+     routerLinkActiveOptions="{exact:true}">Home</a>
+  <a class="nav-item nav-link" [routerLink]="['/users']" routerLinkActive="active">Users</a>
+  <a class="nav-item nav-link" [routerLink]="['/admin']" routerLinkActive="active">Admin</a>
+</nav>
+<router-outlet></router-outlet>
+

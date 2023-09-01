@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {IUser} from "../app-interface";
+import {LoggingService} from "../logging.service";
 
 @Component({
   selector: 'app-user',
@@ -9,34 +10,39 @@ import {IUser} from "../app-interface";
   // styles: [`h1 {
   //     color : red;
   // }`]
+  // providers:[LoggingService]
 })
 export class UserComponent implements OnInit,OnChanges {
 
   private _user: IUser | undefined;
 
-  @Input()
-  set(user: IUser) {
-    this._user = user;
-    this.counter++;
-  };
+  // @Input()
+  // set(user: IUser) {
+  //   this._user = user;
+  //   this.counter++;
+  // };
 
-  get user(): IUser {
-    return <IUser>this._user;
-  }
+  // get user(): IUser {
+  //   return <IUser>this._user;
+  // }
+  //
+  // counter: number = 0;
 
-  counter: number = 0;
-
-  constructor() {
+  constructor(private loggingService: LoggingService) {
   }
 
   ngOnInit(): void {
-    console.log(this.user)
-    console.log(this._user)
+    // console.log(this.user)
+    // console.log(this._user)
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this._user = this.user;
-    this.counter++;
+    // this._user = this.user;
+    // this.counter++;
   }
-
+  log(){
+    // console.log('log in Child User Console');
+    console.log(this.loggingService.title);
+    this.loggingService.log('log in Child User Console');
+  }
 }
