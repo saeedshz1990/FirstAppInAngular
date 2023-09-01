@@ -13,6 +13,9 @@ import { StarComponent } from './star/star.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { UsertableComponent } from './usertable/usertable.component';
 import { IncComponent } from './inc/inc.component';
+import { ColorfulDirective } from './colorful.directive';
+import { AppHighlightDirective } from './app-highlight.directive';
+import { CarouselDirective } from './carousel.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { IncComponent } from './inc/inc.component';
     StarComponent,
     AdduserComponent,
     UsertableComponent,
-    IncComponent
+    IncComponent,
+    ColorfulDirective,
+    AppHighlightDirective,
+    CarouselDirective
   ],
   imports: [
     BrowserModule,

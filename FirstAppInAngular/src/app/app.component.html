@@ -96,7 +96,7 @@
 <!--<app-inc></app-inc>-->
 <!--<app-users><p #par class="success">Hello World!!!</p></app-users>-->
 <!--  <button (click)="onContentChange()" ></button>-->
-<app-user [user]="user"></app-user>
+<!--<app-user [user]="user"></app-user>-->
 <!--<select>-->
 <!--  <div *ngFor="let user of users">-->
 <!--    <div *ngIf="user.age  > 30">-->
@@ -107,13 +107,28 @@
 <!--  &lt;!&ndash;  <option *ngFor="let user of users">{{user.name}}  ({{user.age}})</option>&ndash;&gt;-->
 <!--</select>-->
 
-<select (change)="onSelectedChanged($event.target.value)" )>
-  <ng-container *ngFor="let user of users">
-    <div *ngIf="user.age  > 30">
+<!--<select (change)="onSelectedChanged($event)" )>-->
+<!--  <ng-container *ngFor="let user of users">-->
+<!--    <div *ngIf="user.age  > 30">-->
 <!--      <option [ngValue]="user" ]>{{user.name}}  ({{user.age}})</option>-->
-      <option [Value]="user" ]>{{user.name}}  ({{user.age}})</option>
+<!--      <option [Value]="user" ]>{{user.name}}  ({{user.age}})</option>-->
 
-    </div>
-  </ng-container>
-  <!--  <option *ngFor="let user of users">{{user.name}}  ({{user.age}})</option>-->
-</select>
+<!--    </div>-->
+<!--  </ng-container>-->
+<!--  <option *ngFor="let user of users">{{user.name}}  ({{user.age}})</option>-->
+<!--</select>-->
+
+
+<input type="text" appColorful style="width: fit-content">
+<p [appAppHighlight]="color"> Hello World!!!!!</p>
+
+<div *appCarousel="let image from images autoplay 'No' ;let ctrl=controller">
+  <img [src]="image" alt="">
+  <button (click)="ctrl.next()">Next Image</button>
+  <button (click)="ctrl.prev()">Previous Image</button>
+</div>
+
+<!--convert this tag-->
+<!--<ng-template [appCarousel]>-->
+<!--  <div></div>-->
+<!--</ng-template>-->

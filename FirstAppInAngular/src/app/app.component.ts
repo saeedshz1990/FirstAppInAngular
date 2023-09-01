@@ -60,52 +60,54 @@ export class AppComponent implements OnInit, AfterViewInit {
   //   },
   // ]
   // users: AppInterface[] = [];
-  htmlTest = '<img src=xxx onerror="alert(\"XSS Attack"\)">';
+  // htmlTest = '<img src=xxx onerror="alert(\"XSS Attack"\)">';
   // @ViewChild('par', {static: true, read: ElementRef}) par: ElementRef;
   // @ViewChild(IncComponent, {static: true, read: IncComponent})
-
-  incComp!: IncComponent;
+  color: string = 'red';
+  images: string[]=['./assets/2-food.jpg','./assets/Untitled-1-18.jpg',
+                    './assets/Untitled-3-3.jpg','./assets/Untitled-7-3.jpg','./assets/26.yek4nptgmsetw16cd4j6.jpg']
+  // incComp!: IncComponent;
   //
   // @ViewChildren(IncComponent, {read: IncComponent})
   // incComps!: QueryList<IncComponent>;
   // @ts-ignore
-  @ViewChild('par', {static: true, read: ElementRef}) par: ElementRef;
-
-  user: IUser = {
-    name: 'Saeed',
-    age: 28
-  }
-  users: IUser[] = [
-    {
-      name: 'Saeed',
-      age: 28
-    },
-    {
-      name: 'Saeed',
-      age: 28
-    },
-    {
-      name: 'Saeed',
-      age: 28
-    },
-    {
-      name: 'Saeed',
-      age: 28
-    },
-    {
-      name: 'Saeed',
-      age: 28
-    }
-  ];
+  // @ViewChild('par', {static: true, read: ElementRef}) par: ElementRef;
+  // user: IUser = {
+  //   name: 'Saeed',
+  //   age: 28
+  // }
+  // users: IUser[] = [
+  //   {
+  //     name: 'Saeed',
+  //     age: 28
+  //   },
+  //   {
+  //     name: 'Saeed',
+  //     age: 28
+  //   },
+  //   {
+  //     name: 'Saeed',
+  //     age: 28
+  //   },
+  //   {
+  //     name: 'Saeed',
+  //     age: 28
+  //   },
+  //   {
+  //     name: 'Saeed',
+  //     age: 28
+  //   }
+  // ];
 
   constructor(private renderer: Renderer2) {
   }
 
-  onSelectedChanged(user: IUser){
-    console.log(user)
-  }
+  // onSelectedChanged(user: IUser) {
+  //   console.log(user)
+  // }
+
   ngOnInit() {
-    console.log(this.user);
+    // console.log(this.user);
     // this.style = {
     //   'font-size': this.isCorrect ? '2rem' : '9rem',
     //   'color': 'red',
@@ -132,7 +134,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   onContentChange() {
-    this.par.nativeElement.innerHTML = '123456';
+    // this.par.nativeElement.innerHTML = '123456';
   }
 
   // userAdded(users: AppInterface[]) {
@@ -218,10 +220,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   //   return el.id;
   // }
 
-  onClick(val: HTMLInputElement) {
-    alert(val);
-    alert(val.value);
-  }
+  // onClick(val: HTMLInputElement) {
+  //   alert(val);
+  //   alert(val.value);
+  // }
 
 
 }
