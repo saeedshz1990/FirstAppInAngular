@@ -8,13 +8,15 @@ import {
   OnInit, SimpleChanges, ViewChild
 } from '@angular/core';
 import {LoggingService} from "../logging.service";
+import {MyCompanyService} from "../my-Company.service";
 
 @Component({
   selector: '[app-users]',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
+  providers: [MyCompanyService]
   // providers: [LoggingService]
-  viewProviders: [LoggingService]
+  // viewProviders: [LoggingService]
 })
 export class UsersComponent implements OnInit,
   AfterContentInit, AfterContentChecked, DoCheck, OnChanges, AfterViewInit, AfterViewChecked, OnDestroy {
@@ -25,7 +27,9 @@ export class UsersComponent implements OnInit,
 // // @ts-ignore
 //   @Input() var1;
 
-  constructor(private loggingService: LoggingService) {
+  // constructor(private loggingService: LoggingService) {
+  // }
+  constructor(private myCompanyService: MyCompanyService) {
   }
 
   ngOnInit(): void {
@@ -36,7 +40,7 @@ export class UsersComponent implements OnInit,
   ngAfterContentChecked(): void {
     // console.log("Ng AfterContentChecked" + this.par.nativeElement.textContent)
     // console.log("ngAfterContentChecked Called")
-    this.loggingService.log('log in Userss Console');
+    // this.loggingService.log('log in Userss Console');
   }
 
   ngAfterContentInit(): void {
@@ -75,7 +79,7 @@ export class UsersComponent implements OnInit,
   }
 
   log() {
-    console.log(this.loggingService.title);
-    console.log('log in Users Console');
+    // console.log(this.loggingService.title);
+    // console.log('log in Users Console');
   }
 }

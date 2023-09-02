@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {InjectionToken, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -20,7 +20,25 @@ import {HomeComponent} from './home/home.component';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import {LoggingService} from "./logging.service";
-import { AdminComponent } from './admin/admin.component';
+import {AdminComponent} from './admin/admin.component';
+import {MyCompanyService} from "./my-Company.service";
+
+
+// export function myCompanyServiceProvider(): MyCompanyService {
+//   return new MyCompanyService();
+// }
+//
+// export const MYCOMPANY_SERVICE_TOKEN = new InjectionToken<MyCompanyService>('MYCOMPANY_SERVICE_TOKEN')
+
+export const USER_AGENT = new InjectionToken<string>('USER_AGENT');
+export const SCREEN_WIDTH = new InjectionToken<string>('SCREEN_WIDTH');
+export const SCREEN_HEIGHT = new InjectionToken<string>('SCREEN_HEIGHT');
+
+export function deviceNameProvider(userAgent: string, screenWidth: string, screenHeight: string): string {
+  return userAgent + ' ' + screenWidth + ' ' + screenHeight;
+}
+
+export const DEVICE_NAME_TOKEN = new InjectionToken<string>('DEVICE_NAME_TOKEN');
 
 @NgModule({
   declarations: [
@@ -52,9 +70,15 @@ import { AdminComponent } from './admin/admin.component';
   // providers: [LoggingService],
   // providers: [],
   providers: [
-    // {provide: LoggingService, useClass: LoggingService},
     LoggingService,
+    {provide: USER_AGENT, useValue: window.navigator.userAgent},
+    {provide: SCREEN_WIDTH, useValue: window.screen.width},
+    {provide: SCREEN_HEIGHT, useValue: window.screen.height},
+    {provide: DEVICE_NAME_TOKEN, useFactory: deviceNameProvider, deps: [USER_AGENT, SCREEN_WIDTH, SCREEN_HEIGHT]}
+    // {provide: MYCOMPANY_SERVICE_TOKEN, useFactory: myCompanyServiceProvider}
+    // {provide: LoggingService, useClass: LoggingService},
     // {provide: "API_URL", useClass: "localhost5200/api/v2"}
+
   ],
   bootstrap: [AppComponent]
 })

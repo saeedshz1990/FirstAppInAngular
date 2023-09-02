@@ -1,21 +1,20 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef,
-  OnInit,
+  ElementRef, Inject,
+  OnInit, Optional,
   QueryList,
   Renderer2,
   ViewChild, ViewChildren,
   ViewEncapsulation
 } from '@angular/core';
-import {IncComponent} from "./inc/inc.component";
-import {IUser} from "./app-interface";
+import {MyCompanyService} from "./my-Company.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit, AfterViewInit {
   // name: string = 'Saeed';
@@ -63,9 +62,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   // htmlTest = '<img src=xxx onerror="alert(\"XSS Attack"\)">';
   // @ViewChild('par', {static: true, read: ElementRef}) par: ElementRef;
   // @ViewChild(IncComponent, {static: true, read: IncComponent})
-  color: string = 'red';
-  images: string[]=['./assets/2-food.jpg','./assets/Untitled-1-18.jpg',
-                    './assets/Untitled-3-3.jpg','./assets/Untitled-7-3.jpg','./assets/26.yek4nptgmsetw16cd4j6.jpg']
+  // color: string = 'red';
+  // images: string[]=['./assets/2-food.jpg','./assets/Untitled-1-18.jpg',
+  //                   './assets/Untitled-3-3.jpg','./assets/Untitled-7-3.jpg','./assets/26.yek4nptgmsetw16cd4j6.jpg']
   // incComp!: IncComponent;
   //
   // @ViewChildren(IncComponent, {read: IncComponent})
@@ -99,7 +98,14 @@ export class AppComponent implements OnInit, AfterViewInit {
   //   }
   // ];
 
-  constructor(private renderer: Renderer2) {
+  // constructor(private renderer: Renderer2) {
+  // }
+  // constructor(@Inject(MYCOMPANY_SERVICE_TOKEN) private myCompanyService: MyCompanyService) {
+  // }
+  // constructor(@Inject(DEVICE_NAME_TOKEN) private deviceName: string) {
+  //   console.log(deviceName);
+  // }
+  constructor(@Optional() private myCompanyService: MyCompanyService) {
   }
 
   // onSelectedChanged(user: IUser) {
