@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {LoggingService} from "../logging.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -9,23 +10,28 @@ import {LoggingService} from "../logging.service";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private loggingService: LoggingService) {
-  }
+  // constructor(private loggingService: LoggingService) {
+  // }
 
   // constructor(private loggingService: LoggingService, @Inject('API_URL') url: string) {
   // }
-
+  constructor(private router: Router) {
+  }
   ngOnInit(): void {
   }
 
-  onChange(e: Event) {
-    this.loggingService.title = (e.target as HTMLInputElement).value;
-  }
+  // onChange(e: Event) {
+  //   this.loggingService.title = (e.target as HTMLInputElement).value;
+  // }
+  //
+  // log() {
+  //   // console.log('log in home Console');
+  //   console.log(this.loggingService.title);
+  //   this.loggingService.log('log in home Console');
+  // }
 
-  log() {
-    // console.log('log in home Console');
-    console.log(this.loggingService.title);
-    this.loggingService.log('log in home Console');
+  onUserRedirect(){
+this.router.navigate(['/users']);
   }
 
 }

@@ -1,2 +1,10 @@
-<h1>From UserComponent</h1>
-<button (click)="log()" class="btn btn-primary">Log In Console</button>
+<!--<h1>From UserComponent</h1>-->
+<!--<button (click)="log()" class="btn btn-primary">Log In Console</button>-->
+<div *ngIf="isUSerFound; else elseCond ">
+  <p> The Selected User Id : {{selectedUser?.id}}</p>
+  <p> The Selected User Name : {{selectedUser?.name}}</p>
+</div>
+
+<ng-template #elseCond>the user not exist</ng-template>
+<br>
+<a [routerLink]="['/users','2']"> select second user</a>

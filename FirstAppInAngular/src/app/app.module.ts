@@ -22,6 +22,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import {LoggingService} from "./logging.service";
 import {AdminComponent} from './admin/admin.component';
 import {MyCompanyService} from "./my-Company.service";
+import { ClientsComponent } from './clients/clients.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 // export function myCompanyServiceProvider(): MyCompanyService {
@@ -39,11 +41,11 @@ import {MyCompanyService} from "./my-Company.service";
 // }
 //
 // export const DEVICE_NAME_TOKEN = new InjectionToken<string>('DEVICE_NAME_TOKEN');
-const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'users', component: UsersComponent},
-  {path: 'admin', component: AdminComponent},
-]
+// const routes: Routes = [
+//   {path: '', component: HomeComponent},
+//   {path: 'users', component: UsersComponent},
+//   {path: 'admin', component: AdminComponent},
+// ]
 
 
 @NgModule({
@@ -63,7 +65,9 @@ const routes: Routes = [
     AppHighlightDirective,
     CarouselDirective,
     HomeComponent,
-    AdminComponent
+    AdminComponent,
+    ClientsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +75,7 @@ const routes: Routes = [
     RouterLinkActive,
     RouterLink,
     RouterOutlet,
-    RouterModule.forRoot(routes),
+    // RouterModule.forRoot(routes),
     AppRoutingModule
   ],
   // providers: [LoggingService],
