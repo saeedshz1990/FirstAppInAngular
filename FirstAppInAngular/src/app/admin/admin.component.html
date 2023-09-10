@@ -1,4 +1,14 @@
 <p>admin works!</p>
-<app-users>
-  <app-user></app-user>
-</app-users>
+<!--<app-users>-->
+<!--  <app-user></app-user>-->
+<!--</app-users>-->
+<router-outlet></router-outlet>
+
+<ul>
+  <li>
+    <a [routerLink]=['/manageuser'>ManageUser</a>
+  </li>
+  <li>
+    <a [routerLink]=['/managepage']>ManagePage</a>
+  </li>
+</ul>

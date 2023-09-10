@@ -26,6 +26,8 @@ import { ClientsComponent } from './clients/clients.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
+import { ManagePageComponent } from './manage-page/manage-page.component';
 
 
 // export function myCompanyServiceProvider(): MyCompanyService {
@@ -71,7 +73,9 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
     ClientsComponent,
     NotFoundComponent,
     AboutComponent,
-    NotAuthorizedComponent
+    NotAuthorizedComponent,
+    ManageUserComponent,
+    ManagePageComponent
   ],
   imports: [
     BrowserModule,
