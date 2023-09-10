@@ -198,26 +198,27 @@
       <li class="nav-item ">
         <!--        <a class="nav-link" href=" ">Home <span class="sr-only">(current)</span></a>-->
         <!--        <a class="nav-link" routerLink=" ">Home <span class="sr-only">(current)</span></a>-->
-        <a class="nav-link" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home
+<!--        <a class="nav-link" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home-->
+        <a class="nav-link" [routerLink]="['/']" >Home
           <span
             class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <!--        <a class="nav-link" href="/users">Users</a>-->
         <!--        <a class="nav-link" routerLink="/users">Users</a>-->
-        <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active"
-           [routerLinkActiveOptions]="{exact:true}">Users</a>
+<!--        <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active"[routerLinkActiveOptions]="{exact:true}">Users</a>-->
+        <a class="nav-link" [routerLink]="['/admin']">admin</a>
       </li>
       <li class="nav-item">
         <!--        <a class="nav-link" href="/admin">Admin</a>-->
         <!--        <a class="nav-link" routerLink="/admin">Admin</a>-->
-        <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="active"
-           [routerLinkActiveOptions]="{exact:true}">Admin</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/clients']" routerLinkActive="active"
-           [routerLinkActiveOptions]="{exact:true}">Clients</a>
-      </li>
+<!--        <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="active"           [routerLinkActiveOptions]="{exact:true}">Admin</a>-->
+        <a class="nav-link" [routerLink]="['/about']" >about</a>
+      </li >
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" [routerLink]="['/clients']" routerLinkActive="active"-->
+<!--           [routerLinkActiveOptions]="{exact:true}">Clients</a>-->
+<!--      </li>-->
     </ul>
   </div>
 </nav>

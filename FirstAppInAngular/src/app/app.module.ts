@@ -24,6 +24,8 @@ import {AdminComponent} from './admin/admin.component';
 import {MyCompanyService} from "./my-Company.service";
 import { ClientsComponent } from './clients/clients.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AboutComponent } from './about/about.component';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 
 
 // export function myCompanyServiceProvider(): MyCompanyService {
@@ -67,7 +69,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HomeComponent,
     AdminComponent,
     ClientsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AboutComponent,
+    NotAuthorizedComponent
   ],
   imports: [
     BrowserModule,

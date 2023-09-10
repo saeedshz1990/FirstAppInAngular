@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {LoggingService} from "../logging.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
 
   // constructor(private loggingService: LoggingService, @Inject('API_URL') url: string) {
   // }
-  constructor(private router: Router) {
+  isLoggedIn:boolean=false;
+  constructor(private router: Router,private authservice:AuthService) {
   }
   ngOnInit(): void {
   }
@@ -33,5 +35,11 @@ export class HomeComponent implements OnInit {
   onUserRedirect(){
 this.router.navigate(['/users']);
   }
+  login(){
+    this.authservice.login();
+  }
 
+logout(){
+    this.authservice.logout();
+}
 }
