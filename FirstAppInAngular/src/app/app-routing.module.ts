@@ -12,10 +12,13 @@ import {authGuard} from "./auth.guard";
 import {ManageUserComponent} from "./manage-user/manage-user.component";
 import {ManagePageComponent} from "./manage-page/manage-page.component";
 import {auth2Guard} from "./auth2.guard";
+import {RegisterComponent} from "./register/register.component";
+import {DeactivateGuard} from "./deactivate.guard";
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'register', component: RegisterComponent,canDeactivate:[DeactivateGuard]},
   // {path: 'users', component: UsersComponent},
   // {path: 'users/:id', component: UserComponent},
   // {path: 'admin', component: AdminComponent,canActivate:[authGuard]},
