@@ -1,12 +1,26 @@
-// export interface ICarouselContext {
-//   $implicit: string,
-//   controller: {
-//     next: () => void,
-//     prev: () => void
-//   }
+// // export interface ICarouselContext {
+// //   $implicit: string,
+// //   controller: {
+// //     next: () => void,
+// //     prev: () => void
+// //   }
+// // }
+//
+// export interface IUser {
+//   id: number,
+//   name: string
 // }
 
-export interface IUser {
+export interface album {
   id: number,
-  name: string
+  name: string,
+  albumArt: string,
+  year: number,
+  songs: song[]
+}
+
+export interface song {
+  trackNumber: number,
+  name: string,
+  duration: string
 }

@@ -29,6 +29,8 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManagePageComponent } from './manage-page/manage-page.component';
 import { RegisterComponent } from './register/register.component';
+import { AlbumsComponent } from './albums/albums.component';
+import { AlbumDetailsComponent } from './album-details/album-details.component';
 
 
 // export function myCompanyServiceProvider(): MyCompanyService {
@@ -77,7 +79,9 @@ import { RegisterComponent } from './register/register.component';
     NotAuthorizedComponent,
     ManageUserComponent,
     ManagePageComponent,
-    RegisterComponent
+    RegisterComponent,
+    AlbumsComponent,
+    AlbumDetailsComponent
   ],
   imports: [
     BrowserModule,

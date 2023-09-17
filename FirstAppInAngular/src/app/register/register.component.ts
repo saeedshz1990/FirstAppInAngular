@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {CanComponentDeactivate} from "../deactivate.guard";
 import {Observable} from "rxjs";
-import Promise from "$GLOBAL$";
 
 @Component({
   selector: 'app-register',
