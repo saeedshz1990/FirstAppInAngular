@@ -1,19 +1,15 @@
-import {CanActivateFn, Router} from '@angular/router';
-import {AuthService} from "./auth.service";
+import {CanActivateFn} from '@angular/router';
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const AuthGuard: CanActivateFn = (route, state) => {
+
+  let roles = route.data['roles'] as string[];
+  let returnUrl = state.url;
+
   // @ts-ignore
-  return this.isAuthenticated().then((authenticated:boolean)=>{
-    if (authenticated){
-      return true
+  return this.router.createUrlTree(['/not-authorized'], {
+    queryParams: {
+      returnUrl: returnUrl;
     }
-    else {
-      // return false;
-      // @ts-ignore
-      this.router.navigate('/notAuthorized')
-    }
-  });
+  })
 
-  // constructor(private){}
 };
-// constructor(private authService AuthService,private router : Router)

@@ -31,6 +31,10 @@ import { ManagePageComponent } from './manage-page/manage-page.component';
 import { RegisterComponent } from './register/register.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumDetailsComponent } from './album-details/album-details.component';
+import { ProductComponent } from './product/product.component';
+import { LimitedAccessComponent } from './limited-access/limited-access.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { LoginComponent } from './login/login.component';
 
 
 // export function myCompanyServiceProvider(): MyCompanyService {
@@ -81,7 +85,11 @@ import { AlbumDetailsComponent } from './album-details/album-details.component';
     ManagePageComponent,
     RegisterComponent,
     AlbumsComponent,
-    AlbumDetailsComponent
+    AlbumDetailsComponent,
+    ProductComponent,
+    LimitedAccessComponent,
+    EditProductComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
