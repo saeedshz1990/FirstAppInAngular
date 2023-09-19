@@ -8,7 +8,7 @@ export const AuthGuard: CanActivateFn = (route, state) => {
   // @ts-ignore
   return this.router.createUrlTree(['/not-authorized'], {
     queryParams: {
-      returnUrl: returnUrl;
+      returnUrl: returnUrl
     }
   })
 
