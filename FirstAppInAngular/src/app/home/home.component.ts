@@ -1,9 +1,5 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
-import {LoggingService} from "../logging.service";
-import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
 import {count, interval, Observable, Observer, Subscription} from "rxjs";
-import setInterval from "$GLOBAL$";
 
 @Component({
   selector: 'app-home',

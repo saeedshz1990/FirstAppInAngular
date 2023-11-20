@@ -9,6 +9,9 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {MyCompanyService} from "./my-Company.service";
+import {map, Observable, shareReplay} from "rxjs";
+import {Todo} from "./models/model"
+import {valueOf} from "zone.js";
 
 @Component({
   selector: 'app-root',
@@ -111,6 +114,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   // onSelectedChanged(user: IUser) {
   //   console.log(user)
   // }
+  http$: Observable<Todo[]>;
+  doneTask$: Observable<Todo[]>;
+  undoneTask$: Observable<Todo[]>;
 
   ngOnInit() {
     // console.log(this.user);
@@ -130,6 +136,46 @@ export class AppComponent implements OnInit, AfterViewInit {
     // this.par.nativeElement.innerHTML = '123345452345';
     // console.log(this.incComp);
     // this.incComp.increment();
+    this.http$ = new Observable((observer) => {
+      fetch('http://jsonplaceholder.typicode.com/todos/')
+        .then((response) => {
+          // console.log(response);
+          return response.json();
+        }).then((body) => {
+        // console.log(body);
+        observer.next(body);
+        observer.complete();
+      }).catch((err) => {
+        // console.log(err);
+        observer.error(err);
+      })
+    });
+
+    // this.http$.subscribe((val) => {
+    //   this.doneTask = val.filter(Todo === true);
+    //   this.undoneTask = val.filter(Todo === false);
+
+    this.http$ = this.http$.pipe(
+      shareReplay()
+    );
+
+    this.doneTask$ = this.http$.pipe(
+      map((todo) => todo.filter((todo) => todo.completed === true))
+    );
+    this.undoneTask$ = this.http$.pipe(
+      map((todo) => todo.filter((todo) => todo.completed === false))
+    );
+    // });
+    // debugger;
+    // fetch('http://jsonplaceholder.typicode.com/todos/')
+    //   .then((response) => {
+    //     // console.log(response);
+    //     return response.json();
+    //   }).then((body) => {
+    //   console.log(body);
+    // }).catch((error) => {
+    //   console.log(error);
+    // })
   }
 
   ngAfterViewInit(): void {

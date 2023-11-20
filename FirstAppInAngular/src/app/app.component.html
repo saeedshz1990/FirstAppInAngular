@@ -1,149 +1,190 @@
-<!--<h2>This is a App Component</h2>-->
-<!--<app-users></app-users>-->
+<!--&lt;!&ndash;<h2>This is a App Component</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-users></app-users>&ndash;&gt;-->
 
-<!--class selector-->
-<!--<div class="app-users"></div>-->
+<!--&lt;!&ndash;class selector&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="app-users"></div>&ndash;&gt;-->
 
-<!--property selector-->
-<!--<div app-users></div>-->
+<!--&lt;!&ndash;property selector&ndash;&gt;-->
+<!--&lt;!&ndash;<div app-users></div>&ndash;&gt;-->
 
-<!--databinding-->
-<!--String Polation-->
-<!--<p> {{name}}</p>-->
-<!--Property Binding-->
-<!--<button [disabled]="isEnabled">Add User</button>-->
+<!--&lt;!&ndash;databinding&ndash;&gt;-->
+<!--&lt;!&ndash;String Polation&ndash;&gt;-->
+<!--&lt;!&ndash;<p> {{name}}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;Property Binding&ndash;&gt;-->
+<!--&lt;!&ndash;<button [disabled]="isEnabled">Add User</button>&ndash;&gt;-->
 
-<!--event Binding-->
-<!--<input type="text" (input)="OnInpitChange($event)">-->
+<!--&lt;!&ndash;event Binding&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="text" (input)="OnInpitChange($event)">&ndash;&gt;-->
 
-<!--TwoWay Binding-->
-<!--<input type="text" [(ngModel)]="name">-->
-
-
-<!--*************************-->
-
-<!--<h1 [hidden]="userName===''">Welcome {{userName}}</h1>-->
-<!--<h1 [hidden]="userName!==''">Please Enter Your UserName</h1>-->
-<!--<hr>-->
-<!--<label>Username</label>-->
-<!--<input type="text" (input)="onUserNameInputChanged($event)">-->
-<!--<br>-->
-<!--<label>Password</label>-->
-<!--<input type="password" (input)="onPasswordInputChanged($event)">-->
-<!--<br>-->
-<!--<label>ReTypePassword</label>-->
-<!--<input type="password" (input)="onRetypePasswordInputChanged($event)">-->
-<!--<br>-->
-<!--<br>-->
-<!--<label [hidden]="!isPasswordMatch " style="color: green">Password Is Match!!!!</label>-->
-<!--<label [hidden]="isPasswordMatch || password ===''" style="color: red">Password Is Not Match!!!!</label>-->
+<!--&lt;!&ndash;TwoWay Binding&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="text" [(ngModel)]="name">&ndash;&gt;-->
 
 
-<!--<button class="btn btn-outline-primary btn-group">Add Person</button>-->
+<!--&lt;!&ndash;*************************&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h1 [hidden]="userName===''">Welcome {{userName}}</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;<h1 [hidden]="userName!==''">Please Enter Your UserName</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;<hr>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>Username</label>&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="text" (input)="onUserNameInputChanged($event)">&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="password" (input)="onPasswordInputChanged($event)">&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>ReTypePassword</label>&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="password" (input)="onRetypePasswordInputChanged($event)">&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<label [hidden]="!isPasswordMatch " style="color: green">Password Is Match!!!!</label>&ndash;&gt;-->
+<!--&lt;!&ndash;<label [hidden]="isPasswordMatch || password ===''" style="color: red">Password Is Not Match!!!!</label>&ndash;&gt;-->
 
 
-<!--Attribute Bindiing-->
-<!--<label class="alert-secondary col-xxl-12">Attribute Binding</label>-->
-<!--<p [style.font-size]="isCorrect ? '3rem' : '9rem'">Testing</p>-->
-<!--<p [style]="style">Testing</p>-->
-<!--<p [ngStyle]="style">Testing5</p>-->
-<!--<p [class]="isCorrect ? 'big-font-size' : 'small-font-size'">Testing3</p>-->
-<!--<p [class]="classes">Testing4</p>-->
-<!--<p [ngClass]="classes">Testing4</p>-->
-
-<!--<p *ngIf="isCorrect">ngif true</p>-->
-<!--<p *ngIf="!isCorrect">ngif false</p>-->
-<!--<p *ngIf="isCorrect; else elseCond ">ngif false</p>-->
-
-<!--<ng-template [ngIf]="!isCorrect">-->
-<!--  <p>ngIf True</p>-->
-<!--</ng-template>-->
-
-<!--<ng-template #elseCond>Else Condition</ng-template>-->
-
-<!--<button (click)="addNewUser()"></button>-->
-<!--<p *ngFor="let user of users; let i=index">{{i + " : " + user}}</p>-->
-<!--<p *ngFor="let user of userObj; let i=index trackBy:trackByFunc">{{user.id + " : " + user.name}}</p>-->
-
-<!--<div [ngSwitch]="switchProperty">-->
-<!--  <app-switch-case1 *ngSwitchCase="'a'"></app-switch-case1>-->
-<!--  <app-switch-case2 *ngSwitchCase="'f'"></app-switch-case2>-->
-<!--  <app-switch-case3 *ngSwitchCase="'z'"></app-switch-case3>-->
-<!--  <app-switch-case4 *ngSwitchCase="'b'"></app-switch-case4>-->
-<!--</div>-->
-<!--<app-star *ngFor="let rating of ratings" [starRating]=rating (starEventEmitter)="onStartClicked($event)" )></app-star>-->
-<!--<app-star [rating]=4></app-star>-->
-<!--<app-star [rating]=4.5></app-star>-->
-<!--<app-star [rating]=5></app-star>-->
-<!--<app-star [rating]=3></app-star>-->
-
-<!--<div class="container-fluid">-->
-<!--  <app-adduser (onAddUserClicked)="userAdded($event)"></app-adduser>-->
-<!--  <app-usertable [users]="users" ]></app-usertable>-->
-<!--</div>-->
-<!--sanitizie html-->
-<!--<p #par [innerHTML]="htmlTest">From App Component</p>-->
-<!--<p #par>From App Component</p>-->
-<!--<label>Test Label</label>-->
-<!--<input type="text" #inputName>-->
-<!--<button (click)="onClick(inputName)"> Click Me!!!</button>-->
-<!--<app-inc></app-inc>-->
-<!--<app-inc></app-inc>-->
-<!--<app-inc></app-inc>-->
-<!--<app-inc></app-inc>-->
-<!--<app-inc></app-inc>-->
-<!--<app-inc></app-inc>-->
-<!--<app-inc></app-inc>-->
-<!--<app-users><p #par class="success">Hello World!!!</p></app-users>-->
-<!--  <button (click)="onContentChange()" ></button>-->
-<!--<app-user [user]="user"></app-user>-->
-<!--<select>-->
-<!--  <div *ngFor="let user of users">-->
-<!--    <div *ngIf="user.age  > 30">-->
-<!--      <option [ngValue]="user" ]>{{user.name}}  ({{user.age}})</option>-->
-
-<!--    </div>-->
-<!--  </div>-->
-<!--  &lt;!&ndash;  <option *ngFor="let user of users">{{user.name}}  ({{user.age}})</option>&ndash;&gt;-->
-<!--</select>-->
-
-<!--<select (change)="onSelectedChanged($event)" )>-->
-<!--  <ng-container *ngFor="let user of users">-->
-<!--    <div *ngIf="user.age  > 30">-->
-<!--      <option [ngValue]="user" ]>{{user.name}}  ({{user.age}})</option>-->
-<!--      <option [Value]="user" ]>{{user.name}}  ({{user.age}})</option>-->
-
-<!--    </div>-->
-<!--  </ng-container>-->
-<!--  <option *ngFor="let user of users">{{user.name}}  ({{user.age}})</option>-->
-<!--</select>-->
+<!--&lt;!&ndash;<button class="btn btn-outline-primary btn-group">Add Person</button>&ndash;&gt;-->
 
 
-<!--<input type="text" appColorful style="width: fit-content">-->
-<!--<p [appAppHighlight]="color"> Hello World!!!!!</p>-->
+<!--&lt;!&ndash;Attribute Bindiing&ndash;&gt;-->
+<!--&lt;!&ndash;<label class="alert-secondary col-xxl-12">Attribute Binding</label>&ndash;&gt;-->
+<!--&lt;!&ndash;<p [style.font-size]="isCorrect ? '3rem' : '9rem'">Testing</p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p [style]="style">Testing</p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p [ngStyle]="style">Testing5</p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p [class]="isCorrect ? 'big-font-size' : 'small-font-size'">Testing3</p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p [class]="classes">Testing4</p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p [ngClass]="classes">Testing4</p>&ndash;&gt;-->
 
-<!--<div *appCarousel="let image from images autoplay 'No' ;let ctrl=controller">-->
-<!--  <img [src]="image" alt="">-->
-<!--  <button (click)="ctrl.next()">Next Image</button>-->
-<!--  <button (click)="ctrl.prev()">Previous Image</button>-->
-<!--</div>-->
+<!--&lt;!&ndash;<p *ngIf="isCorrect">ngif true</p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p *ngIf="!isCorrect">ngif false</p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p *ngIf="isCorrect; else elseCond ">ngif false</p>&ndash;&gt;-->
 
-<!--convert this tag-->
-<!--<ng-template [appCarousel]>-->
-<!--  <div></div>-->
-<!--</ng-template>-->
+<!--&lt;!&ndash;<ng-template [ngIf]="!isCorrect">&ndash;&gt;-->
+<!--&lt;!&ndash;  <p>ngIf True</p>&ndash;&gt;-->
+<!--&lt;!&ndash;</ng-template>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<ng-template #elseCond>Else Condition</ng-template>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<button (click)="addNewUser()"></button>&ndash;&gt;-->
+<!--&lt;!&ndash;<p *ngFor="let user of users; let i=index">{{i + " : " + user}}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p *ngFor="let user of userObj; let i=index trackBy:trackByFunc">{{user.id + " : " + user.name}}</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div [ngSwitch]="switchProperty">&ndash;&gt;-->
+<!--&lt;!&ndash;  <app-switch-case1 *ngSwitchCase="'a'"></app-switch-case1>&ndash;&gt;-->
+<!--&lt;!&ndash;  <app-switch-case2 *ngSwitchCase="'f'"></app-switch-case2>&ndash;&gt;-->
+<!--&lt;!&ndash;  <app-switch-case3 *ngSwitchCase="'z'"></app-switch-case3>&ndash;&gt;-->
+<!--&lt;!&ndash;  <app-switch-case4 *ngSwitchCase="'b'"></app-switch-case4>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-star *ngFor="let rating of ratings" [starRating]=rating (starEventEmitter)="onStartClicked($event)" )></app-star>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-star [rating]=4></app-star>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-star [rating]=4.5></app-star>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-star [rating]=5></app-star>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-star [rating]=3></app-star>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="container-fluid">&ndash;&gt;-->
+<!--&lt;!&ndash;  <app-adduser (onAddUserClicked)="userAdded($event)"></app-adduser>&ndash;&gt;-->
+<!--&lt;!&ndash;  <app-usertable [users]="users" ]></app-usertable>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;sanitizie html&ndash;&gt;-->
+<!--&lt;!&ndash;<p #par [innerHTML]="htmlTest">From App Component</p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p #par>From App Component</p>&ndash;&gt;-->
+<!--&lt;!&ndash;<label>Test Label</label>&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="text" #inputName>&ndash;&gt;-->
+<!--&lt;!&ndash;<button (click)="onClick(inputName)"> Click Me!!!</button>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-inc></app-inc>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-inc></app-inc>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-inc></app-inc>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-inc></app-inc>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-inc></app-inc>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-inc></app-inc>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-inc></app-inc>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-users><p #par class="success">Hello World!!!</p></app-users>&ndash;&gt;-->
+<!--&lt;!&ndash;  <button (click)="onContentChange()" ></button>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-user [user]="user"></app-user>&ndash;&gt;-->
+<!--&lt;!&ndash;<select>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div *ngFor="let user of users">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div *ngIf="user.age  > 30">&ndash;&gt;-->
+<!--&lt;!&ndash;      <option [ngValue]="user" ]>{{user.name}}  ({{user.age}})</option>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  &lt;!&ndash;  <option *ngFor="let user of users">{{user.name}}  ({{user.age}})</option>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;</select>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<select (change)="onSelectedChanged($event)" )>&ndash;&gt;-->
+<!--&lt;!&ndash;  <ng-container *ngFor="let user of users">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div *ngIf="user.age  > 30">&ndash;&gt;-->
+<!--&lt;!&ndash;      <option [ngValue]="user" ]>{{user.name}}  ({{user.age}})</option>&ndash;&gt;-->
+<!--&lt;!&ndash;      <option [Value]="user" ]>{{user.name}}  ({{user.age}})</option>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </ng-container>&ndash;&gt;-->
+<!--&lt;!&ndash;  <option *ngFor="let user of users">{{user.name}}  ({{user.age}})</option>&ndash;&gt;-->
+<!--&lt;!&ndash;</select>&ndash;&gt;-->
 
 
-<!--Services-->
-<!--<nav class="nav nav-fill nav-pills">-->
-<!--  <a class="nav-item nav-link" [routerLink]="['/']" routerLinkActive="active"-->
-<!--     routerLinkActiveOptions="{exact:true}">Home</a>-->
-<!--  <a class="nav-item nav-link" [routerLink]="['/users']" routerLinkActive="active">Users</a>-->
-<!--  <a class="nav-item nav-link" [routerLink]="['/admin']" routerLinkActive="active">Admin</a>-->
-<!--</nav>-->
+<!--&lt;!&ndash;<input type="text" appColorful style="width: fit-content">&ndash;&gt;-->
+<!--&lt;!&ndash;<p [appAppHighlight]="color"> Hello World!!!!!</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div *appCarousel="let image from images autoplay 'No' ;let ctrl=controller">&ndash;&gt;-->
+<!--&lt;!&ndash;  <img [src]="image" alt="">&ndash;&gt;-->
+<!--&lt;!&ndash;  <button (click)="ctrl.next()">Next Image</button>&ndash;&gt;-->
+<!--&lt;!&ndash;  <button (click)="ctrl.prev()">Previous Image</button>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;convert this tag&ndash;&gt;-->
+<!--&lt;!&ndash;<ng-template [appCarousel]>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div></div>&ndash;&gt;-->
+<!--&lt;!&ndash;</ng-template>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;Services&ndash;&gt;-->
+<!--&lt;!&ndash;<nav class="nav nav-fill nav-pills">&ndash;&gt;-->
+<!--&lt;!&ndash;  <a class="nav-item nav-link" [routerLink]="['/']" routerLinkActive="active"&ndash;&gt;-->
+<!--&lt;!&ndash;     routerLinkActiveOptions="{exact:true}">Home</a>&ndash;&gt;-->
+<!--&lt;!&ndash;  <a class="nav-item nav-link" [routerLink]="['/users']" routerLinkActive="active">Users</a>&ndash;&gt;-->
+<!--&lt;!&ndash;  <a class="nav-item nav-link" [routerLink]="['/admin']" routerLinkActive="active">Admin</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</nav>&ndash;&gt;-->
+<!--&lt;!&ndash;<router-outlet></router-outlet>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<app-users></app-users>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<nav class="navbar navbar-expand-lg navbar-light bg-light">&ndash;&gt;-->
+<!--&lt;!&ndash;  <a class="navbar-brand" href="#">Navbar</a>&ndash;&gt;-->
+<!--&lt;!&ndash;  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"&ndash;&gt;-->
+<!--&lt;!&ndash;          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">&ndash;&gt;-->
+<!--&lt;!&ndash;    <span class="navbar-toggler-icon"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;  </button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <div class="collapse navbar-collapse" id="navbarSupportedContent">&ndash;&gt;-->
+<!--&lt;!&ndash;    <ul class="navbar-nav mr-auto">&ndash;&gt;-->
+<!--&lt;!&ndash;      <li class="nav-item ">&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;        <a class="nav-link" href=" ">Home <span class="sr-only">(current)</span></a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;        <a class="nav-link" routerLink=" ">Home <span class="sr-only">(current)</span></a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home&ndash;&gt;-->
+<!--&lt;!&ndash;          <span&ndash;&gt;-->
+<!--&lt;!&ndash;            class="sr-only">(current)</span></a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </li>&ndash;&gt;-->
+<!--&lt;!&ndash;      <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;        <a class="nav-link" href="/users">Users</a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;        <a class="nav-link" routerLink="/users">Users</a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active"&ndash;&gt;-->
+<!--&lt;!&ndash;           [routerLinkActiveOptions]="{exact:true}">Users</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </li>&ndash;&gt;-->
+<!--&lt;!&ndash;      <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;        <a class="nav-link" href="/admin">Admin</a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;        <a class="nav-link" routerLink="/admin">Admin</a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="active"&ndash;&gt;-->
+<!--&lt;!&ndash;           [routerLinkActiveOptions]="{exact:true}" >Admin</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </li>&ndash;&gt;-->
+<!--&lt;!&ndash;    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;    <form class="form-inline my-2 my-lg-0">&ndash;&gt;-->
+<!--&lt;!&ndash;      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">&ndash;&gt;-->
+<!--&lt;!&ndash;      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</nav>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;<router-outlet></router-outlet>&ndash;&gt;-->
 <!--<router-outlet></router-outlet>-->
 
-<!--<app-users></app-users>-->
 
 <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
 <!--  <a class="navbar-brand" href="#">Navbar</a>-->
@@ -157,69 +198,40 @@
 <!--      <li class="nav-item ">-->
 <!--        &lt;!&ndash;        <a class="nav-link" href=" ">Home <span class="sr-only">(current)</span></a>&ndash;&gt;-->
 <!--        &lt;!&ndash;        <a class="nav-link" routerLink=" ">Home <span class="sr-only">(current)</span></a>&ndash;&gt;-->
-<!--        <a class="nav-link" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home-->
+<!--&lt;!&ndash;        <a class="nav-link" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home&ndash;&gt;-->
+<!--        <a class="nav-link" [routerLink]="['/']" >Home-->
 <!--          <span-->
 <!--            class="sr-only">(current)</span></a>-->
 <!--      </li>-->
 <!--      <li class="nav-item">-->
 <!--        &lt;!&ndash;        <a class="nav-link" href="/users">Users</a>&ndash;&gt;-->
 <!--        &lt;!&ndash;        <a class="nav-link" routerLink="/users">Users</a>&ndash;&gt;-->
-<!--        <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active"-->
-<!--           [routerLinkActiveOptions]="{exact:true}">Users</a>-->
+<!--&lt;!&ndash;        <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active"[routerLinkActiveOptions]="{exact:true}">Users</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" [routerLink]="['/admin']">admin</a>&ndash;&gt;-->
+<!--        <a class="nav-link" [routerLink]="['/product']">admin</a>-->
 <!--      </li>-->
 <!--      <li class="nav-item">-->
 <!--        &lt;!&ndash;        <a class="nav-link" href="/admin">Admin</a>&ndash;&gt;-->
 <!--        &lt;!&ndash;        <a class="nav-link" routerLink="/admin">Admin</a>&ndash;&gt;-->
-<!--        <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="active"-->
-<!--           [routerLinkActiveOptions]="{exact:true}" >Admin</a>-->
-<!--      </li>-->
+<!--&lt;!&ndash;        <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="active"           [routerLinkActiveOptions]="{exact:true}">Admin</a>&ndash;&gt;-->
+<!--        <a class="nav-link" [routerLink]="['/about']" >about</a>-->
+<!--      </li >-->
+<!--&lt;!&ndash;      <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" [routerLink]="['/clients']" routerLinkActive="active"&ndash;&gt;-->
+<!--&lt;!&ndash;           [routerLinkActiveOptions]="{exact:true}">Clients</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </li>&ndash;&gt;-->
 <!--    </ul>-->
-<!--    <form class="form-inline my-2 my-lg-0">-->
-<!--      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-<!--    </form>-->
 <!--  </div>-->
 <!--</nav>-->
 
-
-<!--<router-outlet></router-outlet>-->
-<router-outlet></router-outlet>
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <!--        <a class="nav-link" href=" ">Home <span class="sr-only">(current)</span></a>-->
-        <!--        <a class="nav-link" routerLink=" ">Home <span class="sr-only">(current)</span></a>-->
-<!--        <a class="nav-link" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home-->
-        <a class="nav-link" [routerLink]="['/']" >Home
-          <span
-            class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <!--        <a class="nav-link" href="/users">Users</a>-->
-        <!--        <a class="nav-link" routerLink="/users">Users</a>-->
-<!--        <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active"[routerLinkActiveOptions]="{exact:true}">Users</a>-->
-<!--        <a class="nav-link" [routerLink]="['/admin']">admin</a>-->
-        <a class="nav-link" [routerLink]="['/product']">admin</a>
-      </li>
-      <li class="nav-item">
-        <!--        <a class="nav-link" href="/admin">Admin</a>-->
-        <!--        <a class="nav-link" routerLink="/admin">Admin</a>-->
-<!--        <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="active"           [routerLinkActiveOptions]="{exact:true}">Admin</a>-->
-        <a class="nav-link" [routerLink]="['/about']" >about</a>
-      </li >
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" [routerLink]="['/clients']" routerLinkActive="active"-->
-<!--           [routerLinkActiveOptions]="{exact:true}">Clients</a>-->
-<!--      </li>-->
-    </ul>
-  </div>
-</nav>
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" *ngFor="let  a of doneTask$| async">About</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" *ngFor="let  a of undoneTask$| async">Contact</a>
+  </li>
+</ul>
