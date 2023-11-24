@@ -9,9 +9,12 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {MyCompanyService} from "./my-Company.service";
-import {from, fromEvent, map, of, take, takeWhile, tap} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {concatMap, delay, filter, from, fromEvent, map, of, take, takeWhile, tap} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {mockData} from "../helpers/mockData";
+import {User} from "./models/app-model";
+import {jsonHelpUsage} from "@angular/cli/src/command-builder/utilities/json-help";
+import {UsersService} from "./servises/users.service";
 // import {map, Observable, shareReplay} from "rxjs";
 // import {Todo} from "./models/model"
 // import {valueOf} from "zone.js";
@@ -112,7 +115,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   //   console.log(deviceName);
   // }
   constructor(@Optional() private myCompanyService: MyCompanyService,
-              private http: HttpClient) {
+              private http: HttpClient, private userServices: UsersService) {
   }
 
 //   constructor( )
@@ -126,6 +129,45 @@ export class AppComponent implements OnInit, AfterViewInit {
   // undoneTask$: Observable<Todo[]>;
   // @ts-ignore
   @ViewChild('input', {static: true}) input: ElementRef;
+
+  user: User[] = [
+    {
+      name: 'saeed',
+      age: 32,
+      status: 'active'
+    },
+    {
+      name: 'saeed',
+      age: 32,
+      status: 'active'
+    },
+    {
+      name: 'saeed',
+      age: 32,
+      status: 'active'
+    },
+    {
+      name: 'saeed',
+      age: 32,
+      status: 'active'
+    },
+    {
+      name: 'saeed',
+      age: 32,
+      status: 'active'
+    },
+    {
+      name: 'saeed',
+      age: 32,
+      status: 'active'
+    },
+    {
+      name: 'saeed',
+      age: 32,
+      status: 'active'
+    },
+
+  ];
 
   ngOnInit() {
     // console.log(this.user);
@@ -185,30 +227,59 @@ export class AppComponent implements OnInit, AfterViewInit {
     // }).catch((error) => {
     //   console.log(error);
     // })
-    fromEvent(document, 'click').pipe(
-      map(event => event as MouseEvent),
+    // from(this.user).pipe(
+    //   // filter(user => user.age < 25)
+    //   filter(user => user.status === 'active')
+    // ).subscribe(console.log);
+    // of(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    //   .subscribe(val => {
+    //     let body = JSON.stringify({
+    //       body: 'test Body',
+    //       title: 'test Title'
+    //     });
+    //     let headers = new HttpHeaders({
+    //       'Content-Type': 'application/json;charset = UTF-8'
+    //     });
+    //     let option = {headers: headers}
+    //     this.http.patch(`http://jsonplaceholder.typicode.com/posts/${val}`, body, option).subscribe(console.log)
+    //   });
+    fromEvent(this.input.nativeElement, 'input').pipe(
+      // tap(i => console.log(i)),
+      map(event => event as InputEvent),
+      map(item => (item.target as HTMLInputElement).value),
+      concatMap(item => this.userServices.patchBodyPost(item)),//جهت سرچ کردن قابل استفاده می باشد
       tap(i => console.log(i)),
-      map(item => {
-        return {
-          x: item.offsetX,
-          y: item.offsetY
-        }
-      }),
-      // take(6),
-      takeWhile(item => item.x < 1000),
-      tap(i => console.log(i)),
-    ).subscribe(console.log)
-    // fromEvent(document,'click').subscribe(console.log)
-    fromEvent(this.input.nativeElement, 'click').subscribe(console.log)
-    of(mockData).subscribe(console.log);
-    this.http.get('src/app/models/mockData.json').subscribe(console.log);
-    of(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
-    of('name1', 'name2', 'name3', 'name4', 'name5').subscribe(console.log);
-    from(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
+    ).subscribe();
+  }
+
+  // fromEvent(document, 'click').pipe(
+  //   map(event => event as MouseEvent),
+  //   tap(i => console.log(i)),
+  //   map(item => {
+  //     return {
+  //       x: item.offsetX,
+  //       y: item.offsetY
+  //     }
+  //   }),
+  //   // take(6),
+  //   takeWhile(item => item.x < 1000),
+  //   tap(i => console.log(i)),
+  // ).subscribe(console.log)
+  // // fromEvent(document,'click').subscribe(console.log)
+  // fromEvent(this.input.nativeElement, 'click').subscribe(console.log)
+  // of(mockData).subscribe(console.log);
+  // this.http.get('src/app/models/mockData.json').subscribe(console.log);
+  // of(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
+  // of('name1', 'name2', 'name3', 'name4', 'name5').subscribe(console.log);
+  // from(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
+
+  public changeBodyPost(val: string) {
 
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit()
+    :
+    void {
     // this.incComps.forEach((comp) => {
     //   comp.increment();
     // });
@@ -219,93 +290,93 @@ export class AppComponent implements OnInit, AfterViewInit {
     // this.par.nativeElement.innerHTML = '123456';
   }
 
-  // userAdded(users: AppInterface[]) {
-  //   this.users = users;
-  // }
+// userAdded(users: AppInterface[]) {
+//   this.users = users;
+// }
 
-  // OnInpitChange(e
-  //                 :
-  //                 Event
-  // ) {
-  //   this.name = (<HTMLInputElement>e.target).value;
-  //   console.table(this.name);
-  // }
-  //
-  // onUserNameInputChanged(e
-  //                          :
-  //                          Event
-  // ) {
-  //   this.userName = (<HTMLInputElement>e.target).value;
-  //   console.log(this.userName);
-  // }
-  //
-  // onPasswordInputChanged(e
-  //                          :
-  //                          Event
-  // ) {
-  //   this.password = (<HTMLInputElement>e.target).value;
-  // }
+// OnInpitChange(e
+//                 :
+//                 Event
+// ) {
+//   this.name = (<HTMLInputElement>e.target).value;
+//   console.table(this.name);
+// }
+//
+// onUserNameInputChanged(e
+//                          :
+//                          Event
+// ) {
+//   this.userName = (<HTMLInputElement>e.target).value;
+//   console.log(this.userName);
+// }
+//
+// onPasswordInputChanged(e
+//                          :
+//                          Event
+// ) {
+//   this.password = (<HTMLInputElement>e.target).value;
+// }
 
 //   onStartClicked(rating: number) {
 // console.log(`The Rating ${rating} Is Clicked`);
 //   }
 
-  // onRetypePasswordInputChanged(e
-  //                                :
-  //                                Event
-  // ) {
-  //   this.retypePassword = (<HTMLInputElement>e.target).value;
-  //
-  //   // this.isPasswordMatch = this.password !== this.retypePassword ? false : true;
-  //
-  //   if (this.password !== this.retypePassword) {
-  //     this.isPasswordMatch = false;
-  //   } else {
-  //     this.isPasswordMatch = true;
-  //   }
-  // }
-  //
-  // addNewUser() {
-  //   this.userObj = [
-  //     {
-  //       id: 11,
-  //       name: 'Fatemeh'
-  //     },
-  //     {
-  //       id: 12,
-  //       name: 'Negar'
-  //     },
-  //     {
-  //       id: 13,
-  //       name: 'Zahra'
-  //     },
-  //     {
-  //       id: 14,
-  //       name: 'Maryam'
-  //     },
-  //     {
-  //       id: 15,
-  //       name: 'Ladan'
-  //     },
-  //     {
-  //       id: 16,
-  //       name: 'Ladan'
-  //     },
-  //     {
-  //       id: 17,
-  //       name: 'Fatemeh'
-  //     },
-  //   ]
-  // }
-  //
-  // trackByFunc(index: number, el: any) {
-  //   return el.id;
-  // }
+// onRetypePasswordInputChanged(e
+//                                :
+//                                Event
+// ) {
+//   this.retypePassword = (<HTMLInputElement>e.target).value;
+//
+//   // this.isPasswordMatch = this.password !== this.retypePassword ? false : true;
+//
+//   if (this.password !== this.retypePassword) {
+//     this.isPasswordMatch = false;
+//   } else {
+//     this.isPasswordMatch = true;
+//   }
+// }
+//
+// addNewUser() {
+//   this.userObj = [
+//     {
+//       id: 11,
+//       name: 'Fatemeh'
+//     },
+//     {
+//       id: 12,
+//       name: 'Negar'
+//     },
+//     {
+//       id: 13,
+//       name: 'Zahra'
+//     },
+//     {
+//       id: 14,
+//       name: 'Maryam'
+//     },
+//     {
+//       id: 15,
+//       name: 'Ladan'
+//     },
+//     {
+//       id: 16,
+//       name: 'Ladan'
+//     },
+//     {
+//       id: 17,
+//       name: 'Fatemeh'
+//     },
+//   ]
+// }
+//
+// trackByFunc(index: number, el: any) {
+//   return el.id;
+// }
 
-  // onClick(val: HTMLInputElement) {
-  //   alert(val);
-  //   alert(val.value);
-  // }
+// onClick(val: HTMLInputElement) {
+//   alert(val);
+//   alert(val.value);
+// }
 
 
 }
