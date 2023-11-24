@@ -9,9 +9,12 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {MyCompanyService} from "./my-Company.service";
-import {map, Observable, shareReplay} from "rxjs";
-import {Todo} from "./models/model"
-import {valueOf} from "zone.js";
+import {from, fromEvent, of} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {mockData} from "../helpers/mockData";
+// import {map, Observable, shareReplay} from "rxjs";
+// import {Todo} from "./models/model"
+// import {valueOf} from "zone.js";
 
 @Component({
   selector: 'app-root',
@@ -108,16 +111,21 @@ export class AppComponent implements OnInit, AfterViewInit {
   // constructor(@Inject(DEVICE_NAME_TOKEN) private deviceName: string) {
   //   console.log(deviceName);
   // }
-  constructor(@Optional() private myCompanyService: MyCompanyService) {
+  constructor(@Optional() private myCompanyService: MyCompanyService,
+              private http: HttpClient) {
   }
 
+//   constructor( )
+// {
+// }
   // onSelectedChanged(user: IUser) {
   //   console.log(user)
   // }
-  http$: Observable<Todo[]>;
-  doneTask$: Observable<Todo[]>;
-  undoneTask$: Observable<Todo[]>;
-
+  // http$: Observable<Todo[]>;
+  // doneTask$: Observable<Todo[]>;
+  // undoneTask$: Observable<Todo[]>;
+  // @ts-ignore
+  @ViewChild('input',{static: true}) input :ElementRef;
   ngOnInit() {
     // console.log(this.user);
     // this.style = {
@@ -136,35 +144,35 @@ export class AppComponent implements OnInit, AfterViewInit {
     // this.par.nativeElement.innerHTML = '123345452345';
     // console.log(this.incComp);
     // this.incComp.increment();
-    this.http$ = new Observable((observer) => {
-      fetch('http://jsonplaceholder.typicode.com/todos/')
-        .then((response) => {
-          // console.log(response);
-          return response.json();
-        }).then((body) => {
-        // console.log(body);
-        observer.next(body);
-        observer.complete();
-      }).catch((err) => {
-        // console.log(err);
-        observer.error(err);
-      })
-    });
+    // this.http$ = new Observable((observer) => {
+    //   fetch('http://jsonplaceholder.typicode.com/todos/')
+    //     .then((response) => {
+    //       // console.log(response);
+    //       return response.json();
+    //     }).then((body) => {
+    //     // console.log(body);
+    //     observer.next(body);
+    //     observer.complete();
+    //   }).catch((err) => {
+    //     // console.log(err);
+    //     observer.error(err);
+    //   })
+    // });
 
     // this.http$.subscribe((val) => {
     //   this.doneTask = val.filter(Todo === true);
     //   this.undoneTask = val.filter(Todo === false);
 
-    this.http$ = this.http$.pipe(
-      shareReplay()
-    );
-
-    this.doneTask$ = this.http$.pipe(
-      map((todo) => todo.filter((todo) => todo.completed === true))
-    );
-    this.undoneTask$ = this.http$.pipe(
-      map((todo) => todo.filter((todo) => todo.completed === false))
-    );
+    // this.http$ = this.http$.pipe(
+    //   shareReplay()
+    // );
+    //
+    // this.doneTask$ = this.http$.pipe(
+    //   map((todo) => todo.filter((todo) => todo.completed === true))
+    // );
+    // this.undoneTask$ = this.http$.pipe(
+    //   map((todo) => todo.filter((todo) => todo.completed === false))
+    // );
     // });
     // debugger;
     // fetch('http://jsonplaceholder.typicode.com/todos/')
@@ -176,6 +184,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     // }).catch((error) => {
     //   console.log(error);
     // })
+    // fromEvent(document,'click').subscribe(console.log)
+    fromEvent(this.input.nativeElement,'click').subscribe(console.log)
+    of(mockData).subscribe(console.log);
+    this.http.get('src/app/models/mockData.json').subscribe(console.log);
+    of(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
+    of('name1', 'name2', 'name3', 'name4', 'name5').subscribe(console.log);
+    from(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
+
   }
 
   ngAfterViewInit(): void {
