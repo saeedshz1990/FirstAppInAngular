@@ -9,7 +9,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {MyCompanyService} from "./my-Company.service";
-import {from, fromEvent, of} from "rxjs";
+import {from, fromEvent, map, of, take, takeWhile, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {mockData} from "../helpers/mockData";
 // import {map, Observable, shareReplay} from "rxjs";
@@ -125,7 +125,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   // doneTask$: Observable<Todo[]>;
   // undoneTask$: Observable<Todo[]>;
   // @ts-ignore
-  @ViewChild('input',{static: true}) input :ElementRef;
+  @ViewChild('input', {static: true}) input: ElementRef;
+
   ngOnInit() {
     // console.log(this.user);
     // this.style = {
@@ -184,8 +185,21 @@ export class AppComponent implements OnInit, AfterViewInit {
     // }).catch((error) => {
     //   console.log(error);
     // })
+    fromEvent(document, 'click').pipe(
+      map(event => event as MouseEvent),
+      tap(i => console.log(i)),
+      map(item => {
+        return {
+          x: item.offsetX,
+          y: item.offsetY
+        }
+      }),
+      // take(6),
+      takeWhile(item => item.x < 1000),
+      tap(i => console.log(i)),
+    ).subscribe(console.log)
     // fromEvent(document,'click').subscribe(console.log)
-    fromEvent(this.input.nativeElement,'click').subscribe(console.log)
+    fromEvent(this.input.nativeElement, 'click').subscribe(console.log)
     of(mockData).subscribe(console.log);
     this.http.get('src/app/models/mockData.json').subscribe(console.log);
     of(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
