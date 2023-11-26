@@ -9,7 +9,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {MyCompanyService} from "./my-Company.service";
-import {concatMap, delay, filter, from, fromEvent, map, of, take, takeWhile, tap} from "rxjs";
+import {concatMap, delay, exhaustMap, filter, from, fromEvent, map, mergeMap, of, take, takeWhile, tap} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {mockData} from "../helpers/mockData";
 import {User} from "./models/app-model";
@@ -129,7 +129,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   // undoneTask$: Observable<Todo[]>;
   // @ts-ignore
   @ViewChild('input', {static: true}) input: ElementRef;
-
+  // @ts-ignore
+  @ViewChild('editButton',{static : true}) editButton: ElementRef;
   user: User[] = [
     {
       name: 'saeed',
@@ -243,12 +244,21 @@ export class AppComponent implements OnInit, AfterViewInit {
     //     let option = {headers: headers}
     //     this.http.patch(`http://jsonplaceholder.typicode.com/posts/${val}`, body, option).subscribe(console.log)
     //   });
-    fromEvent(this.input.nativeElement, 'input').pipe(
-      // tap(i => console.log(i)),
-      map(event => event as InputEvent),
-      map(item => (item.target as HTMLInputElement).value),
-      concatMap(item => this.userServices.patchBodyPost(item)),//جهت سرچ کردن قابل استفاده می باشد
-      tap(i => console.log(i)),
+    // fromEvent(this.input.nativeElement, 'input').pipe(
+    //   // tap(i => console.log(i)),
+    //   map(event => event as InputEvent),
+    //   map(item => (item.target as HTMLInputElement).value),
+    //   concatMap(item => this.userServices.patchBodyPost(item)),//جهت سرچ کردن قابل استفاده می باشد
+    //   tap(i => console.log(i)),
+    // ).subscribe();
+    of(1, 2, 3, 4, 5, 6, 7, 8, 9).pipe(
+      mergeMap((val) => this.pathMultiplePosts(val)),
+      tap(i => console.log(i))
+    ).subscribe();
+    fromEvent(this.editButton.nativeElement, 'click').pipe(
+      tap(() => console.log('clicked')),
+      exhaustMap(() => this.patchSinglePost()),
+      tap(i => console.log(i))
     ).subscribe();
   }
 
@@ -272,6 +282,32 @@ export class AppComponent implements OnInit, AfterViewInit {
   // of(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
   // of('name1', 'name2', 'name3', 'name4', 'name5').subscribe(console.log);
   // from(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
+  public pathMultiplePosts(postId: number) {
+    let body = JSON.stringify({
+      body: "Test123",
+      title: "Title123"
+    });
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json;charset = UTF-8'
+    });
+    let option = {headers: headers}
+    return this.http.patch(`http://jsonplaceholder.typicode.com/posts/${postId}`, body, option);
+  }
+
+  public patchSinglePost() {
+    let body = JSON.stringify({
+      body: "Test123",
+      title: "Title123"
+    });
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json;charset = UTF-8'
+    });
+    let option = {headers: headers}
+    return this.http.patch(`http://jsonplaceholder.typicode.com/posts/1`, body, option)
+      .pipe(
+        delay(2000)
+      );
+  }
 
   public changeBodyPost(val: string) {
 
