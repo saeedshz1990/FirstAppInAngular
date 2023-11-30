@@ -12,7 +12,7 @@ import {MyCompanyService} from "./my-Company.service";
 import {
   catchError,
   concat, concatAll,
-  concatMap,
+  concatMap, defer,
   delay,
   exhaustMap,
   filter, forkJoin,
@@ -413,52 +413,66 @@ export class AppComponent implements OnInit, AfterViewInit {
     //   toArray(),
     //   tap(i => console.log(i))
     // ).subscribe();
-    forkJoin({
-      foo: of(1, 2, 3, 4, 5),
-      bar: Promise.resolve(6),
-      baz: timer(5000),
-      // ban:interval(1000)// بدلیل طولانی شدن هیچ وقت جوابی دریافت نمی کنیم
-      ban: throwError("error Occurred").pipe(catchError(err => of(err))),
-      // ban: interval(1000).pipe(take(5)),
-    }).subscribe(val => console.log("With Object", val));
+    //   forkJoin({
+    //     foo: of(1, 2, 3, 4, 5),
+    //     bar: Promise.resolve(6),
+    //     baz: timer(5000),
+    //     // ban:interval(1000)// بدلیل طولانی شدن هیچ وقت جوابی دریافت نمی کنیم
+    //     ban: throwError("error Occurred").pipe(catchError(err => of(err))),
+    //     // ban: interval(1000).pipe(take(5)),
+    //   }).subscribe(val => console.log("With Object", val));
+    //
+    //
+    //   const observable = forkJoin([
+    //     of(1, 2, 3, 4),
+    //     Promise.resolve(8),
+    //     timer(4000)
+    //   ]);
+    //   observable.subscribe({
+    //     next: value => console.log(value),
+    //     complete: () => console.log('This is how it ends!'),
+    //   });
+    //
+    //   const observable1 = forkJoin({
+    //     foo: of(1, 2, 3, 4),
+    //     bar: Promise.resolve(8),
+    //     baz: timer(4000)
+    //   });
+    //   observable.subscribe({
+    //     next: value => console.log(value),
+    //     complete: () => console.log('This is how it ends!'),
+    //   });
+    //
+    //   const dynamicApiPath = (...args: any) => {
+    //     // @ts-ignore
+    //     return forkJoin(args.map(arg => {
+    //       return this.http.get(arg);
+    //     }))
+    //   }
+    //
+    //   let name$ = of('saeed', 'reza', 'ali');
+    //   let food$ = of('hamburger', 'salad', 'spaghetti');
+    //   let drink$ = of('water', 'cola', 'energy Drink');
+    //
+    //   zip(name$, food$, drink$)
+    //     .pipe(map(([name, food, drink]) => {
+    //       return {name, food, drink}
+    //     }))
+    //     .subscribe(console.log)
+    // }
+    // defer(()=>{
+    //
+    // });
 
-
-    const observable = forkJoin([
-      of(1, 2, 3, 4),
-      Promise.resolve(8),
-      timer(4000)
-    ]);
-    observable.subscribe({
-      next: value => console.log(value),
-      complete: () => console.log('This is how it ends!'),
-    });
-
-    const observable1 = forkJoin({
-      foo: of(1, 2, 3, 4),
-      bar: Promise.resolve(8),
-      baz: timer(4000)
-    });
-    observable.subscribe({
-      next: value => console.log(value),
-      complete: () => console.log('This is how it ends!'),
-    });
-
-    const dynamicApiPath = (...args: any) => {
-      // @ts-ignore
-      return forkJoin(args.map(arg => {
-        return this.http.get(arg);
-      }))
-    }
-
-    let name$ = of('saeed', 'reza', 'ali');
-    let food$ = of('hamburger', 'salad', 'spaghetti');
-    let drink$ = of('water', 'cola', 'energy Drink');
-
-    zip(name$, food$, drink$)
-      .pipe(map(([name, food, drink]) => {
-        return {name, food, drink}
-      }))
-      .subscribe(console.log)
+    const srcObj$ = defer(() =>of(Math.random() * 10));
+    // const srcObj$ = defer(() => from(
+    //   fetch('http://jsonplaceholder.typicode.com/Users/1')
+    //     .then((response) => {
+    //       return response.json();
+    //     })));
+    const obj1$ = srcObj$.subscribe(console.log);
+    const obj2$ = srcObj$.subscribe(console.log);
+    const obj3$ = srcObj$.subscribe(console.log);
   }
 
   public getAddress(usefId: number): Observable<Address> {
