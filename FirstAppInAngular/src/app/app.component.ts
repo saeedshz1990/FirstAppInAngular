@@ -9,12 +9,29 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {MyCompanyService} from "./my-Company.service";
-import {concatMap, delay, exhaustMap, filter, from, fromEvent, map, mergeMap, of, take, takeWhile, tap} from "rxjs";
+import {
+  concat, concatAll,
+  concatMap,
+  delay,
+  exhaustMap,
+  filter,
+  from,
+  fromEvent,
+  map,
+  mergeMap,
+  Observable,
+  of,
+  take,
+  takeWhile,
+  tap, toArray
+} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {mockData} from "../helpers/mockData";
 import {User} from "./models/app-model";
 import {jsonHelpUsage} from "@angular/cli/src/command-builder/utilities/json-help";
 import {UsersService} from "./servises/users.service";
+import {Address} from "./models/model";
+import {Users} from "./models/model";
 // import {map, Observable, shareReplay} from "rxjs";
 // import {Todo} from "./models/model"
 // import {valueOf} from "zone.js";
@@ -130,47 +147,161 @@ export class AppComponent implements OnInit, AfterViewInit {
   // @ts-ignore
   @ViewChild('input', {static: true}) input: ElementRef;
   // @ts-ignore
-  @ViewChild('editButton',{static : true}) editButton: ElementRef;
-  user: User[] = [
+  @ViewChild('editButton', {static: true}) editButton: ElementRef;
+  // user: User[] = [
+  //   {
+  //     name: 'saeed',
+  //     age: 32,
+  //     status: 'active'
+  //   },
+  //   {
+  //     name: 'saeed',
+  //     age: 32,
+  //     status: 'active'
+  //   },
+  //   {
+  //     name: 'saeed',
+  //     age: 32,
+  //     status: 'active'
+  //   },
+  //   {
+  //     name: 'saeed',
+  //     age: 32,
+  //     status: 'active'
+  //   },
+  //   {
+  //     name: 'saeed',
+  //     age: 32,
+  //     status: 'active'
+  //   },
+  //   {
+  //     name: 'saeed',
+  //     age: 32,
+  //     status: 'active'
+  //   },
+  //   {
+  //     name: 'saeed',
+  //     age: 32,
+  //     status: 'active'
+  //   },
+  //
+  // ];
+  // @ts-ignore
+  public users: Users[] = [
     {
-      name: 'saeed',
-      age: 32,
-      status: 'active'
+      id: 0,
+      name: "saeed"
     },
     {
-      name: 'saeed',
-      age: 32,
-      status: 'active'
+      id: 0,
+      name: "saeed"
     },
     {
-      name: 'saeed',
-      age: 32,
-      status: 'active'
+      id: 0,
+      name: "saeed"
     },
     {
-      name: 'saeed',
-      age: 32,
-      status: 'active'
+      id: 0,
+      name: "saeed"
     },
     {
-      name: 'saeed',
-      age: 32,
-      status: 'active'
-    },
-    {
-      name: 'saeed',
-      age: 32,
-      status: 'active'
-    },
-    {
-      name: 'saeed',
-      age: 32,
-      status: 'active'
-    },
+      id: 0,
+      name: "saeed"
 
-  ];
+    },
+    {
+      id: 0,
+      name: "saeed"
+    },
+    {
+      id: 0,
+      name: "saeed"
+    },
+    {
+      id: 0,
+      name: "saeed"
+    },
+  ]
+  // @ts-ignore
+  public address: Address = [
+    {
+      userId: 1,
+      street: " Shiraz",
+      country: "iran",
+      city: "shiraz",
+      state: "fars",
+      zipCode: 15987
+    },
+    {
+      userId: 1,
+      street: " Shiraz",
+      country: "iran",
+      city: "shiraz",
+      state: "fars",
+      zipCode: 15987
+    },
+    {
+      userId: 1,
+      street: " Shiraz",
+      country: "iran",
+      city: "shiraz",
+      state: "fars",
+      zipCode: 15987
+    },
+    {
+      userId: 1,
+      street: " Shiraz",
+      country: "iran",
+      city: "shiraz",
+      state: "fars",
+      zipCode: 15987
+    },
+    {
+      userId: 1,
+      street: " Shiraz",
+      country: "iran",
+      city: "shiraz",
+      state: "fars",
+      zipCode: 15987
+    },
+    {
+      userId: 1,
+      street: " Shiraz",
+      country: "iran",
+      city: "shiraz",
+      state: "fars",
+      zipCode: 15987
+    },
+    {
+      userId: 1,
+      street: " Shiraz",
+      country: "iran",
+      city: "shiraz",
+      state: "fars",
+      zipCode: 15987
+    },
+    {
+      userId: 1,
+      street: " Shiraz",
+      country: "iran",
+      city: "shiraz",
+      state: "fars",
+      zipCode: 15987
+    },
+  ]
 
   ngOnInit() {
+    // const obs1$ = of(1, 2).pipe(delay(5000));
+    // const obs2$ = of(3, 4).pipe(delay(1000));
+    // const obs3$ = of(5, 6).pipe(delay(3000));
+    // const obs4$ = of(of(of(1, 2)));
+    // const res$ = concat(obs1$, obs2$, obs3$).subscribe(console.log);
+    // // @ts-ignore
+    // const res1$ = concat(obs1$, obs2$, obs3$).pipe(concatAll()).subscribe(console.log);
+    // const res3$ = obs4$.pipe(mergeMap(
+    //     n => n),
+    //   mergeMap(i => i)
+    // ).subscribe(console.log);
     // console.log(this.user);
     // this.style = {
     //   'font-size': this.isCorrect ? '2rem' : '9rem',
@@ -251,66 +382,44 @@ export class AppComponent implements OnInit, AfterViewInit {
     //   concatMap(item => this.userServices.patchBodyPost(item)),//جهت سرچ کردن قابل استفاده می باشد
     //   tap(i => console.log(i)),
     // ).subscribe();
-    of(1, 2, 3, 4, 5, 6, 7, 8, 9).pipe(
-      mergeMap((val) => this.pathMultiplePosts(val)),
+    // of(1, 2, 3, 4, 5, 6, 7, 8, 9).pipe(
+    //   mergeMap((val) => this.pathMultiplePosts(val)),
+    //   tap(i => console.log(i))
+    // ).subscribe();
+    // fromEvent(this.editButton.nativeElement, 'click').pipe(
+    //   tap(() => console.log('clicked')),
+    //   exhaustMap(() => this.patchSinglePost()),
+    //   tap(i => console.log(i))
+    // ).subscribe();
+
+    let user$: Observable<Observable<Observable<Users[]>>>;
+    let address$: Observable<Address[]>;
+
+    user$ = of(of(of(this.users)));
+
+    // @ts-ignore
+    address$ = user$.pipe(
+      mergeMap(users => users),
+      mergeMap(users => users),
+      mergeMap(users => users),
+      mergeMap(users => {
+        const add: Observable<Address> = this.getAddress(users.id);
+        return add;
+      }),
+      map(addres => {
+        return {...addres, user: this.users[addres.userId].name}
+      }),
+      toArray(),
       tap(i => console.log(i))
     ).subscribe();
-    fromEvent(this.editButton.nativeElement, 'click').pipe(
-      tap(() => console.log('clicked')),
-      exhaustMap(() => this.patchSinglePost()),
-      tap(i => console.log(i))
-    ).subscribe();
   }
 
-  // fromEvent(document, 'click').pipe(
-  //   map(event => event as MouseEvent),
-  //   tap(i => console.log(i)),
-  //   map(item => {
-  //     return {
-  //       x: item.offsetX,
-  //       y: item.offsetY
-  //     }
-  //   }),
-  //   // take(6),
-  //   takeWhile(item => item.x < 1000),
-  //   tap(i => console.log(i)),
-  // ).subscribe(console.log)
-  // // fromEvent(document,'click').subscribe(console.log)
-  // fromEvent(this.input.nativeElement, 'click').subscribe(console.log)
-  // of(mockData).subscribe(console.log);
-  // this.http.get('src/app/models/mockData.json').subscribe(console.log);
-  // of(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
-  // of('name1', 'name2', 'name3', 'name4', 'name5').subscribe(console.log);
-  // from(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
-  public pathMultiplePosts(postId: number) {
-    let body = JSON.stringify({
-      body: "Test123",
-      title: "Title123"
-    });
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json;charset = UTF-8'
-    });
-    let option = {headers: headers}
-    return this.http.patch(`http://jsonplaceholder.typicode.com/posts/${postId}`, body, option);
-  }
 
-  public patchSinglePost() {
-    let body = JSON.stringify({
-      body: "Test123",
-      title: "Title123"
-    });
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json;charset = UTF-8'
-    });
-    let option = {headers: headers}
-    return this.http.patch(`http://jsonplaceholder.typicode.com/posts/1`, body, option)
-      .pipe(
-        delay(2000)
-      );
-  }
-
-  public changeBodyPost(val: string) {
-
+  public getAddress(usefId: number): Observable<Address> {
+    // @ts-ignore
+    const add = this.address.findIndex(a => a.userId = userId);
+    // @ts-ignore
+    return of(this.address[add]);
   }
 
   ngAfterViewInit()
@@ -413,6 +522,57 @@ export class AppComponent implements OnInit, AfterViewInit {
 //   alert(val);
 //   alert(val.value);
 // }
+
+  // public changeBodyPost(val: string) {
+  //
+  // }
+
+  // fromEvent(document, 'click').pipe(
+  //   map(event => event as MouseEvent),
+  //   tap(i => console.log(i)),
+  //   map(item => {
+  //     return {
+  //       x: item.offsetX,
+  //       y: item.offsetY
+  //     }
+  //   }),
+  //   // take(6),
+  //   takeWhile(item => item.x < 1000),
+  //   tap(i => console.log(i)),
+  // ).subscribe(console.log)
+  // // fromEvent(document,'click').subscribe(console.log)
+  // fromEvent(this.input.nativeElement, 'click').subscribe(console.log)
+  // of(mockData).subscribe(console.log);
+  // this.http.get('src/app/models/mockData.json').subscribe(console.log);
+  // of(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
+  // of('name1', 'name2', 'name3', 'name4', 'name5').subscribe(console.log);
+  // from(['name1', 'name2', 'name3', 'name4', 'name5']).subscribe(console.log);
+  // public pathMultiplePosts(postId: number) {
+  //   let body = JSON.stringify({
+  //     body: "Test123",
+  //     title: "Title123"
+  //   });
+  //   let headers = new HttpHeaders({
+  //     'Content-Type': 'application/json;charset = UTF-8'
+  //   });
+  //   let option = {headers: headers}
+  //   return this.http.patch(`http://jsonplaceholder.typicode.com/posts/${postId}`, body, option);
+  // }
+  //
+  // public patchSinglePost() {
+  //   let body = JSON.stringify({
+  //     body: "Test123",
+  //     title: "Title123"
+  //   });
+  //   let headers = new HttpHeaders({
+  //     'Content-Type': 'application/json;charset = UTF-8'
+  //   });
+  //   let option = {headers: headers}
+  //   return this.http.patch(`http://jsonplaceholder.typicode.com/posts/1`, body, option)
+  //     .pipe(
+  //       delay(2000)
+  //     );
+  // }
 
 
 }
